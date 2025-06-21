@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9.Port</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="what-is-port-and-usage-">What is port and usage :</h2>
+<ul>
+<li>Port is <strong>software defined number</strong> which is associated with specific protocol that is used for communication between 2 devices in the network for specific service/process.</li>
+<li>These ports are not visible and can not touch manually.</li>
+</ul>
+<p><strong>Purpose</strong>: Ports help manage multiple network services and applications on a single device by distinguishing between different types of network traffic.</p>
+<h2 id="types-of-ports">Types of ports:</h2>
+<ul>
+<li>
+<p>Ports are identified by port numbers, which are 16-bit integers ranging from <strong>0 to 65,535</strong> into 3 categories.</p>
+<ol>
+<li><strong>Well-Known Ports</strong>: Ranges from 0 to 1,023. These ports are assigned and controlled by the ** ** (IANA) and are used by widely used protocols and services. For example:</li>
+</ol>
+<ul>
+<li><strong>Port 80</strong>: HTTP (web traffic)</li>
+<li><strong>Port 443</strong>: HTTPS (secure web traffic)</li>
+<li><strong>Port 25</strong>: SMTP (email sending)</li>
+<li><strong>Port 22</strong>: SSH (secure shell)</li>
+</ul>
+<p>2.<strong>Registered Ports</strong>: Ranges from 1,024 to 49,151. These ports are used by <strong>software applications</strong> that are not as universally recognized as those using well-known ports. They can be registered with IANA for <strong>specific applications or services.</strong></p>
+</li>
+</ul>
+<ol start="3">
+<li><strong>Dynamic or Private Ports</strong>: Ranges from 49,152 to 65,535. These ports are typically used for ephemeral or <strong>temporary purposes</strong> and are often assigned dynamically by the operating system for client-side applications to use during communication sessions.</li>
+</ol>
+<h2 id="basic-port-numbers-to-remember">Basic Port numbers to remember:</h2>
+<p>20 - FTP Tunneling<br>
+21 - FTP data transfer<br>
+22 - SSH<br>
+23 - Telnet<br>
+25 - SMTP<br>
+53 - DNS<br>
+67 - DHCP server<br>
+68 - DHCP client<br>
+80 - HTTP<br>
+443 - HTTPS<br>
+445 - SMB( server Message Block)<br>
+123 - NTP (Network Time Protocol)<br>
+143 - IMAP ( Internet Message Access Protocol) - 	               	      			              unencrypted communication - Default port<br>
+993 - IMAP with encrypted communication<br>
+110 - POP3 (post office protocol3)<br>
+3389 - RDP ( remote desktop protocol)<br>
+50 - IPSec encapsulating (ESP)<br>
+500 - IKE<br>
+4500 - IPSec NAT traversal</p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. ICMP</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="icmp---internet-control-message-protocol">ICMP - Internet control message protocol</h2>
+<p><img src="https://data-flair.training/blogs/wp-content/uploads/sites/2/2021/12/icmp-protocol.webp" alt="ICMP Protocol - Internet Control Message Protocol - DataFlair"></p>
+<ul>
+<li><strong>ICMP</strong>, or <strong>Internet Control Message Protocol</strong>, is a core protocol within the Internet Protocol (IP) suite. It is primarily used for <em><strong>error reporting and diagnostic (troubleshooting) purposes</strong></em>, helping to manage and control network communication.</li>
+<li>It is a <em><strong>connectionless protocol</strong></em> that allows devices to communicate without opening a connection with each other. ICMP is different from Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) in that it’s not associated with a transport layer protocol.</li>
+<li>It is <strong>network layer protocol.</strong></li>
+</ul>
+<h3 id="common-icmp-messages">Common ICMP Messages:</h3>
+<p><strong>1. Echo Request and Echo Reply (Ping):</strong></p>
+<ul>
+<li><strong>Echo Request:</strong> Sent by a device to another device to check if it is reachable.</li>
+<li><strong>Echo Reply:</strong> Sent by the destination device in response to the Echo Request, confirming its presence and connectivity.</li>
+</ul>
+<p><strong>2. Traceroute:</strong></p>
+<ul>
+<li>ICMP can be used to determine if a destination is unreachable. For example, if a device replies with a type 3 destination unreachable message, it could mean that the remote host or network is unreachable.</li>
+</ul>
+<p><strong>3.Time Exceeded:</strong></p>
+<ul>
+<li>Sent when a packet’s time-to-live (TTL) value expires, indicating that the packet has been discarded because it took too long to reach its destination. This is commonly used in <code>traceroute</code> to identify the route packets take.</li>
+</ul>
+<p><strong>4.Redirect:</strong></p>
+<ul>
+<li>Used by routers to inform hosts that a better route to the destination exists, encouraging the host to use the alternative route.</li>
+</ul>
+<p><strong>5.Source Quench:</strong></p>
+<ul>
+<li>An indication that a sender should slow down the rate of packet transmission because the receiver is overloaded (note: this message is now considered deprecated and is rarely used).</li>
+</ul>
+</div>
+</body>
+
+</html>

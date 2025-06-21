@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>29.Cyber Kill Chain</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="cyber-kill-chain-process">Cyber Kill Chain Process</h2>
+<ul>
+<li>The <strong>Cyber Kill Chain</strong> is a model developed by <em><strong>Lockheed Martin</strong></em> from a military attack that describes the stages of a cyberattack, from initial reconnaissance to achieving the attacker’s objectives.</li>
+<li>It provides a structured framework for understanding, detecting, and mitigating cyber threats. By analyzing each stage of the kill chain, organizations can better prepare for, respond to, and prevent attacks.</li>
+</ul>
+<p><img src="https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/photo/cyber/THE-CYBER-KILL-CHAIN-body.png.pc-adaptive.full.medium.png" alt="Cyber"></p>
+<h3 id="stages-of-the-cyber-kill-chain">Stages of the Cyber Kill Chain</h3>
+<ol>
+<li>
+<p><strong>Reconnaissance</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The attacker gathers information about the target organization, such as network architecture, email addresses, employee roles, and vulnerabilities. This stage involves both passive and active reconnaissance methods.</li>
+</ul>
+</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>Active research</th>
+<th>Passive Research</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gather the information about victim by using tools like Nmap, websites</td>
+<td>Gather the information about victim using social media like LinkedIn, Facebook etc.</td>
+</tr>
+<tr>
+<td>Gather info about victim by interacting</td>
+<td>Gather info about victim without interaction</td>
+</tr>
+</tbody>
+</table><ul>
+<li><strong>Mitigation</strong>: Implement security measures like network segmentation, monitor for unusual scanning activities, and educate employees about social engineering tactics.</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>Weaponization</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The attacker creates or acquires a weapon (such as malware or an exploit) tailored to the vulnerabilities discovered during reconnaissance. This weapon is designed to exploit specific weaknesses in the target’s system.</li>
+<li><strong>Mitigation</strong>: Regularly update and patch systems to fix vulnerabilities, use advanced threat detection tools, and employ intrusion prevention systems.</li>
+</ul>
+</li>
+<li>
+<p><strong>Delivery</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The attacker delivers the weapon to the target. This can be done through various methods, such as phishing emails, malicious attachments, exploit kits, or compromised websites.</li>
+<li><strong>Mitigation</strong>: Use email filtering and anti-phishing technologies, implement strong network security controls, and educate users on recognizing and avoiding suspicious communications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exploitation</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The weapon is executed on the target’s system by exploiting the identified vulnerability. This typically involves executing malicious code or taking advantage of a weakness in the target’s software or hardware.</li>
+<li><strong>Mitigation</strong>: Employ robust security measures such as application whitelisting, endpoint protection, and regular vulnerability assessments.</li>
+</ul>
+</li>
+<li>
+<p><strong>Installation</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The attacker installs malware or other tools on the compromised system to maintain persistence and control. This could involve installing backdoors, remote access tools, or other forms of malware.</li>
+<li><strong>Mitigation</strong>: Use endpoint protection solutions, conduct regular scans for unauthorized software, and employ network monitoring to detect suspicious activities.</li>
+</ul>
+</li>
+<li>
+<p><strong>Command and Control (C2)</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The attacker establishes a command and control channel to remotely manage the compromised system. This allows them to send instructions, exfiltrate data, or deploy additional payloads.</li>
+<li><strong>Mitigation</strong>: Monitor network traffic for unusual connections or patterns, use DNS filtering to block known malicious domains, and deploy network segmentation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Actions on Objectives</strong>:</p>
+<ul>
+<li><strong>Description</strong>: The attacker achieves their objectives, such as stealing data, disrupting operations, or damaging systems. This stage represents the culmination of the attacker’s efforts and the realization of their goals.</li>
+<li><strong>Mitigation</strong>: Implement data loss prevention (DLP) solutions, regularly back up critical data, and have an incident response plan in place to quickly address and mitigate damage.</li>
+</ul>
+</li>
+</ol>
+</div>
+</body>
+
+</html>

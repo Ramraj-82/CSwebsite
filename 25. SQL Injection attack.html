@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25. SQL Injection attack</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="sql-injection-attack">SQL Injection Attack</h2>
+<ul>
+<li><em><strong>SQL - Structed query language,</strong></em> designed to manage data stored in relation database.</li>
+<li><em><strong>SQL Injection (SQLi)</strong></em> is a type of cyberattack that targets databases through vulnerabilities in web applications.</li>
+<li>This attack involves <em><strong>injecting malicious SQL queries</strong></em> into input fields or parameters that are then executed by the database, potentially allowing attackers to manipulate or access data in unauthorized ways.</li>
+<li>A successful exploitation, attacker gains
+<ul>
+<li>Authentication bypass</li>
+<li>Command execution</li>
+<li>Exfiltration of sensitive data</li>
+<li>Creating/Deleting/Updating database entries</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://spanning.com/wp-content/uploads/2019/07/SQL-injection-attack-example.png" alt="SQL Injection Attacks — Web-based App Security, Part 4 | Spanning"></p>
+<h3 id="how-sql-injection-works">How SQL Injection Works</h3>
+<hr>
+<ol>
+<li>
+<p><strong>Vulnerability</strong>: The web application has an input field (such as a search box, login form, or URL parameter) that directly interacts with a database. If the application does not properly sanitize or validate user input, it becomes vulnerable to SQL injection.</p>
+</li>
+<li>
+<p><strong>Injection</strong>: An attacker submits malicious SQL code through the vulnerable input field. For example, they might input <code>'; DROP TABLE users;--</code> in a login form.</p>
+</li>
+<li>
+<p><strong>Execution</strong>: The application constructs an SQL query by concatenating user input with SQL commands. If the input is not properly sanitized, the injected SQL code becomes part of the executed query, potentially altering its behavior.</p>
+</li>
+<li>
+<p><strong>Impact</strong>: Depending on the attacker’s goals and the application’s security, the impact can vary from reading, modifying, or deleting data to gaining administrative access to the database.</p>
+</li>
+</ol>
+<h3 id="types-of-sql-injections"><strong>Types of SQL Injections</strong></h3>
+<hr>
+<p>There are 3 types of SQL Injection. These are:</p>
+<ol>
+<li>
+<p><strong>In-band SQLi (Classic SQLi)</strong>: When an SQL query is sent and responded to on the same channel, we call this in-band SQLi. This is easier for attackers to exploit than other categories of SQLi.</p>
+</li>
+<li>
+<p><strong>Inferential SQLi (Blind SQLi):</strong>  SQL queries that receive a response that cannot be seen are called Inferential SQLi. They are also called “Blind SQLi” because the response cannot be seen.</p>
+</li>
+<li>
+<p><strong>Out-of-band SQLi</strong>: If the response to an SQL query is communicated through another channel, this type of SQLi is called “out-of-band SQLi”. For example, if the attacker receives replies to the SQL queries via DNS, this is called out-of-band SQLi.</p>
+</li>
+</ol>
+<h2 id="how-to-detect-sqli-attack">How to Detect SQLi attack:</h2>
+<ul>
+<li><strong>Look for SQL keywords:</strong> Look for words such as ““GET”, INSERT”, “SELECT”, and “WHERE” in the data received from users.</li>
+<li><strong>Check any special characters:</strong> Look for apostrophes (’), dashes (-), or parentheses used in SQL or special characters commonly used in SQL attacks in the data received from the user.</li>
+<li><strong>Check the frequency of requests:</strong> Automated tools are designed to send an estimated number of requests per second to test payloads as quickly as possible. A normal user might send 1 request per second, so looking at the number of requests per second will tell you if the requests are from an automated tool or not.</li>
+<li><strong>Look at the User-Agent:</strong> Automated tools usually have their names and versions recorded. You can look at the User-Agent to detect these automated tools.</li>
+<li>Check the request URL and <em><strong>decode the URL</strong></em> to find out any malicious sql statements are present or not.</li>
+<li><strong>Look at the content of the payload:</strong> Automated tools usually include their own names in their payloads. For example, an SQL injection payload sent by an automated tool might look like this:  <strong>sqlmap’ OR 1=1</strong></li>
+<li>Also check <em><strong>source IP address reputation</strong></em> .</li>
+<li>Check <em><strong>response status like (400, 500)</strong></em> of all requests based on that we can determine that the attack was successful or not.</li>
+</ul>
+<h2 id="how-to-mitigate-sqli">How to Mitigate SQLi</h2>
+<ol>
+<li><strong>Trust No-one</strong>: Assume all users submitted data is evil.</li>
+<li><strong>Input Validation and Sanitization</strong>: Validate and sanitize all user inputs to ensure they conform to expected formats and escape special characters if necessary.</li>
+<li><strong>Parameterized Queries</strong>:Use prepared statements with parameterized queries to ensure that user input is treated as data rather than executable code. These are simple, easy to write and only pass when each parameter in sql code is clearly defined.</li>
+<li><strong>Stored Procedures</strong>: Use stored procedures to interact with the database, ensuring that user input is handled securely.</li>
+<li><strong>Least Privilege</strong>:
+<ul>
+<li>Configure database accounts with the minimum privileges required for their tasks to limit the potential impact of an attack.</li>
+<li>Do not connect to database using admin privileges account unless there is something do with admin privileges.</li>
+</ul>
+</li>
+<li><strong>Regular Security Testing</strong>: Conduct regular security assessments, including penetration testing and vulnerability scanning, to identify and address potential SQL injection vulnerabilities and patch those asap.</li>
+<li><strong>Web Application Firewall (WAF)</strong>: Deploy a WAF to detect and block SQL injection attempts and other common web attacks.</li>
+<li>Turn of the <em><strong>visibility of the Database</strong></em> errors on the site to hide the exact the reason of the failure.</li>
+<li>Don’t forget to <em><strong>change the password</strong></em> of applications and database regularly.</li>
+</ol>
+</div>
+</body>
+
+</html>

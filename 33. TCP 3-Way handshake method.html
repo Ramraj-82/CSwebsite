@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>33. TCP 3-Way handshake method</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h3 id="tcp-3-way-handshake-method">TCP 3-Way handshake Method</h3>
+<p>Three-way handshake process to establish a connection between the client and server. This process involves the exchange of three specific packets:</p>
+<p><img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*IE_SkdCYUrY3HyQ5U59WZg.png" alt="enter image description here"></p>
+<ol>
+<li>
+<p><strong>SYN Packet:</strong></p>
+<ul>
+<li><strong>Initiation:</strong> The client sends a SYN packet to the server, indicating its desire to establish a connection.</li>
+<li><strong>Source Port:</strong> The client specifies a random port number in the source port field of the SYN packet.</li>
+<li><strong>Destination Port:</strong> The client sets the destination port to 22, the default SSH port.</li>
+<li><strong>Sequence Number:</strong> The client chooses a random sequence number to initiate the connection.</li>
+</ul>
+</li>
+<li>
+<p><strong>SYN-ACK Packet:</strong></p>
+<ul>
+<li><strong>Server Response:</strong> The server responds with a SYN-ACK packet.</li>
+<li><strong>Acknowledgment Number:</strong> The server acknowledges the client’s SYN packet by setting the acknowledgment number to the client’s sequence number plus 1.</li>
+<li><strong>Sequence Number:</strong> The server generates a random sequence number for its own connection.</li>
+<li><strong>Flags:</strong> The server sets the SYN and ACK flags in the packet header.</li>
+</ul>
+</li>
+<li>
+<p><strong>ACK Packet:</strong></p>
+<ul>
+<li><strong>Client Confirmation:</strong> The client sends an ACK packet to confirm the connection.</li>
+<li><strong>Acknowledgment Number:</strong> The client acknowledges the server’s SYN-ACK packet by setting the acknowledgment number to the server’s sequence number plus 1.</li>
+<li><strong>Flags:</strong> The client sets the ACK flag in the packet header.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Once the three-way handshake is complete, a reliable connection is established between the client and server.</strong></p>
+<h3 id="additional-considerations">Additional Considerations</h3>
+<ul>
+<li><strong>TCP/IP:</strong> SSH operates on top of the Transmission Control Protocol (TCP), which provides a reliable and ordered byte stream.</li>
+<li><strong>Port Numbers:</strong> While the default SSH port is 22, both the client and server can use different port numbers.</li>
+<li><strong>Firewalls:</strong> Firewalls may block SSH connections if they are not configured properly.</li>
+<li><strong>NAT:</strong> Network Address Translation (NAT) can be used to translate private IP addresses to public IP addresses, allowing multiple devices to share a single public IP address.</li>
+</ul>
+</div>
+</body>
+
+</html>

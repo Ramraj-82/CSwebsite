@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>32. SSH</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="ssh-secure-shell">SSH: Secure Shell</h1>
+<p><strong>Description:</strong></p>
+<ul>
+<li>It is a cryptographic network protocol that provides a secure channel over an insecure network.</li>
+<li>It is primarily used to access and control remote computers, but it is also used for tunnelling other network protocols.</li>
+<li>It was designed to replace older protocols like telnet (unsecure communication or plain text communication) and FTP, which transmit data, including passwords, in plain text, making them vulnerable to interception.</li>
+<li>Default port is 22.</li>
+</ul>
+<h3 id="key-features-of-ssh">Key Features of SSH:</h3>
+<ul>
+<li><strong>Encryption</strong>: SSH encrypts the data being transmitted, ensuring that even if the communication is intercepted, the data remains unreadable to unauthorized users.</li>
+<li><strong>Authentication</strong>: SSH supports multiple authentication methods, including password-based and public key-based authentication.</li>
+<li><strong>Data Integrity</strong>: Ensures that the data sent over the network is not altered.</li>
+</ul>
+<h3 id="step-by-step-explanation-of-how-ssh-works">Step-by-Step Explanation of How SSH Works:</h3>
+<h4 id="installation-and-setup">1. <strong>Installation and Setup</strong>:</h4>
+<ul>
+<li><strong>SSH Server</strong>: Installed on the remote machine (the one you want to connect to). This can be a server or any computer with SSH server software installed.</li>
+<li><strong>SSH Client</strong>: Installed on the local machine (the one you are connecting from). This could be your personal computer or any other device with an SSH client.</li>
+</ul>
+<h4 id="connection-initiation">2.<strong>Connection initiation</strong>:</h4>
+<ul>
+<li>The SSH client initiate and establish the connection using below command (TCP 3-way handshake method) with following negotiations.
+<ul>
+<li>Command: <strong>ssh username@remote_host</strong></li>
+<li>Here, <code>username</code> is the user account on the remote machine, and <code>remote_host</code> is the IP address or domain name of the remote machine.<br>
+<strong>i. Negotiating protocol version</strong>: The client and server agree on on the SSH version to use.<br>
+<strong>ii. Negotiating Algorithm</strong>: They negotiate which encryption (Public key), Key exchange (Diffle-Hellman) and hashing algorithm will be used.</li>
+</ul>
+</li>
+</ul>
+<h4 id="key-exchange">3. <strong>Key Exchange</strong>:</h4>
+<ul>
+<li>The SSH client and server perform a key exchange to establish a secure channel.</li>
+<li>Both the client and the server generate temporary public-private key pairs. They exchange the public keys and use them to generate a shared secret key(Session Key). This key is used to encrypt the session.</li>
+<li>The Diffie-Hellman Key Exchange algorithm is typically used for this purpose.</li>
+</ul>
+<h4 id="server-authentication">4. <strong>Server Authentication</strong>:</h4>
+<ul>
+<li>The client checks the server’s public key against a known list of servers (usually stored in the <code>~/.ssh/known_hosts</code> file).</li>
+<li>If this is the first time the client is connecting to the server, it will ask the user to confirm the server’s fingerprint (a hashed version of the public key).</li>
+<li>If the user confirms, the fingerprint is stored, and the connection proceeds. In subsequent connections, the client will automatically verify the server’s identity using this stored fingerprint.</li>
+</ul>
+<h4 id="client-authentication">5. <strong>Client Authentication</strong>:</h4>
+<ul>
+<li>Once the server is authenticated, the server needs to authenticate the client.</li>
+<li><strong>Password Authentication</strong>: The server prompts the client for a password. If the password matches the one on the server for the specified user, access is granted.</li>
+<li><strong>Public Key Authentication</strong>: The client sends its public key to the server. The server checks if this public key is authorized for the user. If it is, the server sends a challenge encrypted with the client’s public key. The client must decrypt it with its private key and send it back. If successful, access is granted.</li>
+</ul>
+<h4 id="establishing-the-secure-connection">6. <strong>Establishing the Secure Connection</strong>:</h4>
+<ul>
+<li>After successful authentication, an encrypted session is established.</li>
+<li>All data exchanged between the client and server is encrypted, ensuring confidentiality and integrity.</li>
+</ul>
+<h4 id="session-communication">7. <strong>Session Communication</strong>:</h4>
+<ul>
+<li>The client can now issue commands, transfer files, or perform other tasks on the remote machine as if they were physically present at the terminal.</li>
+<li>Data sent between the client and server (e.g., commands, responses, file contents) is encrypted using the session key established during the key exchange.</li>
+</ul>
+<h4 id="session-termination">8. <strong>Session Termination</strong>:</h4>
+<ul>
+<li>Once the user is done, they can close the SSH session by typing <code>exit</code> or simply closing the terminal window.</li>
+<li>This ends the encrypted session, and the connection between the client and server is terminated.</li>
+</ul>
+<h3 id="usage-of-ssh">Usage of SSH:</h3>
+<ul>
+<li><strong>Remote Administration</strong>: Admins use SSH to manage and configure remote servers.</li>
+<li><strong>Secure File Transfers</strong>: With tools like <code>scp</code> (Secure Copy Protocol) and <code>sftp</code> (Secure File Transfer Protocol), files can be securely transferred over an SSH connection.</li>
+<li><strong>Tunneling and Port Forwarding</strong>: SSH can be used to create secure tunnels for other protocols, such as HTTP or FTP and forward ports, enabling secure access to services behind firewalls.</li>
+</ul>
+<h3 id="security-considerations">Security Considerations</h3>
+<ul>
+<li><strong>Use Strong Passwords or Public Key Authentication</strong>: To prevent unauthorized access, always use strong, complex passwords or better yet, public key authentication.</li>
+<li><strong>Disable Root Login</strong>: For enhanced security, disable direct root login over SSH and use a regular user account with <code>sudo</code> privileges instead.</li>
+<li><strong>Keep SSH Software Updated</strong>: Regularly update your SSH client and server to protect against vulnerabilities.</li>
+<li></li>
+</ul>
+<h2 id="ssh-security-configuration-best-practices">SSH Security Configuration: Best Practices</h2>
+<p><strong>Server Configuration:</strong></p>
+<ol>
+<li>
+<p><strong>Disable Password Authentication:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Password-based authentication is less secure than public-key authentication.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>PermitRootLogin no</code> (Disallow root login via password)</li>
+<li><code>PasswordAuthentication no</code> (Disable password authentication)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Restrict Root Login:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Restricting root login to specific IP addresses or SSH keys enhances security.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>PermitRootLogin restrict</code> (Allow root login only from specified IP addresses or keys)</li>
+<li><code>AllowUsers root@your_ip</code> (Allow root login from your IP address)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Strong Encryption Ciphers:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Strong encryption ciphers provide better security against attacks.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>Ciphers aes128-ctr,aes256-ctr,chacha20-poly1305@openssh.com</code> (Specify strong ciphers)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Disable Host-Based Authentication:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Host-based authentication can be vulnerable to attacks.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>HostbasedAuthentication no</code> (Disable host-based authentication)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure SSHD Logging:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Logging helps identify and troubleshoot security issues.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>LogLevel INFO</code> (Set the logging level)</li>
+<li><code>SyslogFacility AUTHPRIV</code> (Log to the authentication facility)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Restrict SSH Access:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Limit SSH access to authorized users and IP addresses.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>AllowUsers user1 user2</code> (Allow only specified users)</li>
+<li><code>AllowGroups group1 group2</code> (Allow only specified groups)</li>
+<li><code>DenyFrom 0.0.0.0/0</code> (Deny all connections)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Use a Strong SSH Key:</strong></p>
+<ul>
+<li><strong>Reason:</strong> A strong SSH key is essential for secure authentication.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li>Generate a key with a high bit length (e.g., 4096 bits)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Client Configuration:</strong></p>
+<ol>
+<li>
+<p><strong>Use Strong Encryption Ciphers:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Ensure the client uses strong encryption ciphers.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>Ciphers aes128-ctr,aes256-ctr,chacha20-poly1305@openssh.com</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Disable Host-Based Authentication:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Disable host-based authentication on the client side.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>HostbasedAuthentication no</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure SSHD Logging:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Enable logging on the client side for troubleshooting.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>LogLevel INFO</code></li>
+<li><code>SyslogFacility AUTHPRIV</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Restrict SSH Access:</strong></p>
+<ul>
+<li><strong>Reason:</strong> Limit SSH access to authorized servers.</li>
+<li><strong>Configuration:</strong>
+<ul>
+<li><code>Host server1</code> (Specify allowed servers)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://media.licdn.com/dms/image/v2/D5622AQGo5h322GI68g/feedshare-shrink_800/feedshare-shrink_800/0/1711547071916?e=1727308800&amp;v=beta&amp;t=PhRhtEugXT4FHVyJS93wo6vCEe2ln0S6O2v8F3oizMI" alt="enter image description here"></p>
+<p><strong>Local Port Forwarding:</strong></p>
+<ul>
+<li>
+<p><strong>Purpose:</strong> Forwards local ports on your client machine to remote ports on a server.</p>
+</li>
+<li>
+<p><strong>Use Case:</strong> Accessing services on a remote server that are not directly accessible from your network, such as a web server behind a firewall.</p>
+</li>
+<li>
+<p><strong>Command:</strong></p>
+<p>Bash</p>
+<p><code>ssh -L &lt;local_port&gt;:&lt;remote_host&gt;:&lt;remote_port&gt; &lt;user&gt;@&lt;server_host&gt;</code></p>
+<ul>
+<li><code>-L</code>: Specifies local port forwarding.</li>
+<li><code>&lt;local_port&gt;</code>: The local port number on your client machine.</li>
+<li><code>&lt;remote_host&gt;</code>: The hostname or IP address of the remote server.</li>
+<li><code>&lt;remote_port&gt;</code>: The remote port number on the server.</li>
+<li><code>&lt;user&gt;@&lt;server_host&gt;</code>: The username and hostname of the remote server.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example:</strong> To access a web server on a remote machine that is behind a firewall, you could use:</p>
+<p>Bash</p>
+<p><code>ssh -L 8080:remote_server:80 user@remote_server</code></p>
+<p><strong>Remote Port Forwarding:</strong></p>
+<ul>
+<li>
+<p><strong>Purpose:</strong> Forwards remote ports on a server to local ports on your client machine.</p>
+</li>
+<li>
+<p><strong>Use Case:</strong> Accessing services on your local machine from a remote server, such as a development environment.</p>
+</li>
+<li>
+<p><strong>Command:</strong></p>
+<p>Bash</p>
+<p><code>ssh -R &lt;remote_port&gt;:&lt;local_host&gt;:&lt;local_port&gt; &lt;user&gt;@&lt;server_host&gt;</code></p>
+<ul>
+<li><code>-R</code>: Specifies remote port forwarding.</li>
+<li><code>&lt;remote_port&gt;</code>: The remote port number on the server.</li>
+<li><code>&lt;local_host&gt;</code>: The hostname or IP address of your local machine.</li>
+<li><code>&lt;local_port&gt;</code>: The local port number on your client machine.</li>
+<li><code>&lt;user&gt;@&lt;server_host&gt;</code>: The username and hostname of the remote server.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example:</strong> To access a local web server from a remote machine, you could use:</p>
+<p>Bash</p>
+<p><code>ssh -R 80:localhost:8080 user@remote_server</code></p>
+<p>Reference link for SSH Local and remote forwarding:<br>
+<a href="https://www.youtube.com/watch?v=N8f5zv9UUMI&amp;t=769s">https://www.youtube.com/watch?v=N8f5zv9UUMI&amp;t=769s</a></p>
+<h3 id="ssh-interview-questions">SSH interview questions:</h3>
+<ol>
+<li>
+<p><strong>What is SSH and how does it work?</strong></p>
+<ul>
+<li>SSH (Secure Shell) is a network protocol that allows users to securely access remote computers over a network. It provides secure remote login, command execution, and file transfer. SSH uses public-key cryptography for authentication and encryption to protect data in transit.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are the different authentication methods in SSH?</strong></p>
+<ul>
+<li><strong>Password-based authentication:</strong> This is the most common method, where the user provides a username and password to access the remote system.</li>
+<li><strong>Public-key authentication:</strong> This method uses a pair of cryptographic keys: a public key and a private key. The public key is distributed to remote systems, while the private key is kept secret by the user. When connecting, SSH uses the public key to verify the user’s identity, and then uses the private key to encrypt and decrypt data.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is the default SSH port number?</strong></p>
+<ul>
+<li>The default SSH port number is 22.</li>
+</ul>
+</li>
+<li>
+<p><strong>How does SSH encryption work?</strong></p>
+<ul>
+<li>SSH uses a combination of symmetric and asymmetric encryption algorithms. Asymmetric encryption is used for key exchange, while symmetric encryption is used for data encryption. SSH typically uses RSA or Diffie-Hellman for key exchange and AES for data encryption.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is the difference between SSH and Telnet?</strong></p>
+<ul>
+<li>Both SSH and Telnet are used for remote access, but SSH provides much stronger security. Telnet transmits data in plain text, making it vulnerable to eavesdropping and attacks. SSH encrypts all data transmitted, making it much more secure.</li>
+</ul>
+</li>
+</ol>
+<h3 id="configuration-and-usage">Configuration and Usage</h3>
+<ol>
+<li>
+<p><strong>How do you configure SSH on a Linux server?</strong></p>
+<ul>
+<li>SSH is typically configured by editing the <code>/etc/ssh/sshd_config</code> file. This file contains various settings related to SSH, such as authentication methods, port numbers, and security options.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you create SSH keys?</strong></p>
+<ul>
+<li>SSH keys can be created using the <code>ssh-keygen</code> command. This command generates a public key and a private key. The private key should be kept secret, while the public key can be distributed to other systems.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you add a public key to an authorized_keys file?</strong></p>
+<ul>
+<li>The public key can be added to the <code>authorized_keys</code> file in the user’s home directory on the remote system. This file contains a list of public keys that are allowed to access the system.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you use SSH tunneling?</strong></p>
+<ul>
+<li>SSH tunneling allows you to create secure tunnels over an SSH connection. This can be used to forward traffic from a local port to a remote port, or to access a service that is only accessible from within a specific network.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you use SSH to forward ports?</strong></p>
+<ul>
+<li>SSH port forwarding can be used to forward traffic from a local port to a remote port. This can be useful for accessing services that are only accessible from within a specific network, or for creating a secure tunnel for remote access.</li>
+</ul>
+</li>
+</ol>
+<h3 id="security">Security</h3>
+<ol>
+<li>
+<p><strong>What are some common SSH security vulnerabilities?</strong></p>
+<ul>
+<li>Some common SSH security vulnerabilities include brute force attacks, password guessing, and man-in-the-middle attacks.</li>
+</ul>
+</li>
+<li>
+<p><strong>How can you harden SSH security?</strong></p>
+<ul>
+<li>To harden SSH security, you can:
+<ul>
+<li>Use strong passwords and public-key authentication.</li>
+<li>Disable password-based authentication if possible.</li>
+<li>Limit the number of login attempts.</li>
+<li>Configure SSH to only listen on specific interfaces.</li>
+<li>Use a firewall to restrict access to the SSH port.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What is SSH brute force attacks and how to prevent them?</strong></p>
+<ul>
+<li>SSH brute force attacks involve trying to guess the password for an SSH account by repeatedly trying different combinations. To prevent brute force attacks, you can limit the number of login attempts, use strong passwords, and enable rate limiting.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is SSH key-based authentication and how does it improve security?</strong></p>
+<ul>
+<li>SSH key-based authentication is a more secure method of authentication than password-based authentication. With key-based authentication, there is no password to guess, making it much more difficult for attackers to gain unauthorized access.</li>
+</ul>
+</li>
+</ol>
+<h3 id="advanced-topics">Advanced Topics</h3>
+<ol>
+<li>
+<p><strong>What is SSH protocol version 2 and how does it differ from version 1?</strong></p>
+<ul>
+<li>SSH protocol version 2 is more efficient and secure than version 1. It offers improved performance, better security features, and support for more algorithms.</li>
+</ul>
+</li>
+<li>
+<p><strong>How does SSH handle multiplexing?</strong></p>
+<ul>
+<li>SSH multiplexing allows multiple connections to be multiplexed over a single TCP connection. This can improve performance and reduce resource usage.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are some SSH-related tools and utilities?</strong></p>
+<ul>
+<li>Some common SSH-related tools and utilities include:
+<ul>
+<li><code>ssh</code> - The main SSH client command.</li>
+<li><code>scp</code> - A command for copying files securely over SSH.</li>
+<li><code>sftp</code> - A command for securely transferring files over SSH.</li>
+<li><code>ssh-keygen</code> - A command for generating SSH keys.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you troubleshoot SSH connection issues?</strong></p>
+<ul>
+<li>To troubleshoot SSH connection issues, you can:
+<ul>
+<li>Check the SSH server logs for error messages.</li>
+<li>Verify that the SSH port is open and accessible.</li>
+<li>Ensure that the SSH client and server are configured correctly.</li>
+<li>Test the network connection between the client and server.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</body>
+
+</html>

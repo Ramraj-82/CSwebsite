@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11. HTTP Vs HTTPs</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="http-vs-https">HTTP Vs HTTPs</h2>
+<p><em><strong>HTTP:</strong></em>  It stands for Hyper text Transfer protocol and is a plain text communication over the internet.</p>
+<p>The <strong>Hyper Text Transfer Protocol (HTTP)</strong> is a foundational protocol used for communication between web browsers and web servers. It defines the <em><strong>rules and formats</strong></em> for how data is exchanged over the internet.</p>
+<p><strong>Key components and functions of HTTP:</strong></p>
+<ul>
+<li><strong>Requests:</strong> A web browser sends an HTTP request to a web server, specifying the resource it wants to access (e.g., a webpage, image, or video).</li>
+<li><strong>Responses:</strong> The web server processes the request and sends an HTTP response back to the browser, containing the requested resource or an error message.</li>
+<li><strong>Request methods:</strong> HTTP defines several methods to indicate the type of action the browser wants to perform:
+<ul>
+<li><strong>GET:</strong> Retrieves a resource from the server.</li>
+<li><strong>POST:</strong> Sends data to the server for processing.</li>
+<li><strong>PUT:</strong> Updates a resource on the server.</li>
+<li><strong>DELETE:</strong> Removes a resource from the server.</li>
+<li><strong>HEAD:</strong> Retrieves the header information of a resource without the body.</li>
+<li><strong>OPTIONS:</strong> Retrieves the allowed methods for a resource.</li>
+<li><strong>TRACE:</strong> Traces the path of a request through the network.</li>
+<li><strong>CONNECT:</strong> Establishes a tunnel for a connection.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Status codes:</strong> HTTP uses status codes to indicate the outcome of a request:</p>
+<ul>
+<li>
+<p><strong>100 accepted:</strong> The request was accepted.</p>
+</li>
+<li>
+<p><strong>200 OK:</strong> The request was successful.</p>
+</li>
+<li>
+<p><strong>301 Moved Permanently:</strong> The resource has been permanently moved to a new location.</p>
+</li>
+<li>
+<p><strong>302 Moved Temporally:</strong> The resource has been temporally moved to a new location. But here the browsers were allowed to change the request method to <strong>GET</strong> when following the redirect, even if the original request was <strong>POST</strong>.</p>
+</li>
+<li>
+<p><strong>307 Moved Temporally</strong>: Use the <strong>same HTTP method</strong> in the subsequent request to the new URI.</p>
+</li>
+<li>
+<p><strong>400 Bad Request:</strong> The request was malformed.</p>
+</li>
+<li>
+<p><strong>401 Unauthorized:</strong> The request requires authentication.</p>
+</li>
+<li>
+<p><strong>402 Payment required:</strong> The request requires payment before fulfilling the request.</p>
+</li>
+<li>
+<p><strong>403 Forbidden:</strong> The server refuses to fulfill the request.</p>
+</li>
+<li>
+<p><strong>404 Not Found:</strong> The requested resource could not be found.</p>
+</li>
+<li>
+<p><strong>500 Internal Server Error:</strong> The server encountered an error while processing the request.</p>
+</li>
+<li>
+<p><strong>502 Bad Gateway:</strong> the server received a valid request but was unable to fulfill it due to an error from an upstream server. This typically occurs when a web server is acting as a proxy or gateway and encounters an issue while communicating with the backend server.</p>
+</li>
+<li>
+<p><strong>503 Service unavailable:</strong> The server is temporarily unable to handle the request, either due to maintenance, overload, or other temporary issues.</p>
+</li>
+<li>
+<p><strong>504 Gateway Timeout:</strong> The server acting as a gateway or proxy did not receive a timely response from the upstream server. This typically occurs when there is a delay or issue in the communication between the web server and the backend server.</p>
+</li>
+<li>
+<p><strong>Headers:</strong> HTTP headers provide additional information about the request or response, such as content type, encoding, and caching instructions.</p>
+</li>
+<li>
+<p><strong>Body:</strong> The body of an HTTP message contains the actual data being transferred, such as the content of a webpage or the data being sent in a POST request.</p>
+</li>
+</ul>
+<p><strong>HTTP versions:</strong></p>
+<ul>
+<li><strong>HTTP/1.0:</strong> The original version of HTTP, introduced in 1991.</li>
+<li><strong>HTTP/1.1:</strong> Introduced in 1997, HTTP/1.1 introduced several improvements, such as persistent connections, pipelining, and caching.</li>
+<li><strong>HTTP/2:</strong> Released in 2015, HTTP/2 is a major upgrade that offers improved performance through features like multiplexing, header compression, and server push.</li>
+<li><strong>HTTP/3:</strong> The latest version of HTTP, based on the QUIC protocol, aims to further improve performance and security.</li>
+</ul>
+<p><em><strong>Drawbacks of HTTP:</strong></em></p>
+<ol>
+<li>It is a <strong>plain text communication</strong> and anyone can intercept the traffic.</li>
+<li>It is <strong>not encrypt the data</strong> anyone can read if intercept the traffic.</li>
+<li><strong>Limited integrity</strong> means data will be altered if attacker incept the traffic.</li>
+</ol>
+<p><strong>HTTPS</strong>: Hyper Text Transfer Protocol Secure</p>
+<p><strong>HTTPS</strong> (Hypertext Transfer Protocol Secure) is a secure version of HTTP, the protocol used to transfer data on the web. The “S” in HTTPS stands for “Secure.”</p>
+<p><strong>Key differences between HTTP and HTTPS:</strong></p>
+<ul>
+<li><strong>Encryption:</strong> HTTPS uses encryption to protect data transmitted between a web server and a client (e.g., a web browser). This means that data is scrambled before it’s sent and unscrambled only by the intended recipient.</li>
+<li><strong>SSL/TLS:</strong> HTTPS relies on SSL (Secure Sockets Layer) or TLS (Transport Layer Security) certificates to establish a secure connection. These certificates verify the identity of the website and encrypt data.</li>
+<li><strong>Padlock icon:</strong> Web browsers typically display a padlock icon in the address bar to indicate that a website is using HTTPS.</li>
+<li><strong>Security:</strong> HTTPS provides a higher level of security than HTTP, making it essential for websites that handle sensitive information, such as online banking, e-commerce, and login credentials.</li>
+</ul>
+<p><strong>Benefits of HTTPS:</strong></p>
+<ul>
+<li><strong>Data privacy:</strong> HTTPS protects user data from being intercepted or eavesdropped on by third parties.</li>
+<li><strong>Identity verification:</strong> HTTPS ensures that users are communicating with the intended website and not a malicious imposter.</li>
+<li><strong>Trust:</strong> Websites using HTTPS are generally considered more trustworthy by users.</li>
+<li><strong>SEO:</strong> Google and other search engines give preference to websites that use HTTPS, which can improve their search engine rankings.</li>
+</ul>
+<p><strong>How to identify an HTTPS website:</strong></p>
+<ul>
+<li><strong>URL:</strong> The URL of an HTTPS website starts with “https://” instead of “http://”.</li>
+<li><strong>Padlock icon:</strong> Look for a padlock icon in the address bar of your web browser.</li>
+<li><strong>Certificate information:</strong> You can click on the padlock icon to view the website’s SSL/TLS certificate information.</li>
+</ul>
+<p><img src="https://static.semrush.com/blog/uploads/media/c6/8c/c68c398de579ac227690a69a174f2e49/ae29cc49ff936b065082c7b9d4ffd3f3/original.png" alt="What Is HTTPS &amp; How Does It Work? [Explained]"></p>
+<h2 id="how-ssltls-works">How SSL/TLS works:</h2>
+<ul>
+<li>SSL/TLS uses both asymmetric and symmetric encryption  <strong>( Hybrid encryption)</strong> to protect the confidentiality and integrity of data in transit.</li>
+<li><em><strong>Asymmetric encryption</strong></em> is used to establish the connection between client and server.</li>
+<li><em><strong>Symmetric encryption</strong></em> is used to exchange the data between client and server after establishing the secure connection.<br>
+<strong>Step 1:</strong>  Client sends hello request to the serve rto establish the connection.<br>
+<strong>Step 2:</strong> Then the server accept and return hello request along with its certificate and public key to the client.<br>
+<strong>Step 3:</strong> Then the client checks the server certificate with root certificate too ensure that it is valid and genuine.<br>
+Then client shares a random sequence number ( session number) which is encrypted with the server public key.<br>
+<strong>Step 4:</strong> The server decrypts the random sequence number with its private key and establish the connection.<br>
+<strong>Step 5:</strong> After establish the connection and negotiation of the SSL/TLS version, algorithm version, transmits the data between client and server by using symmetric encryption.</li>
+</ul>
+<h2 id="history">History:</h2>
+<ul>
+<li>TSL is successor of the SSL v3, so logically TLs is more secure than SSL.</li>
+</ul>
+<p><strong>Beast attack:</strong>  Vulnerable versions of SSL and TLS 1.0.</p>
+<p>It allows attacker to capture and decrypt HTTPs client -server sessions and obtain authentication tokens, leads to MITM attacks.</p>
+<p><em><strong>Poodle attack:</strong></em> The attacker intercept the traffic then force the the browser to downgrade the server security protocol SSL3.0, TLS 1.0 to steal confidential info.</p>
+<p><em><strong>Note:</strong></em> So TLS 1.1/ TLS1.2/TLS1.3 (latest) version should be used.<br>
+And before disabling the older version of SSL/TLS check the compatibility of the server.</p>
+</div>
+</body>
+
+</html>

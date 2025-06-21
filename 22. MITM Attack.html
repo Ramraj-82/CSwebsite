@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22. MITM Attack</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="mitm-attack">MITM Attack</h2>
+<p><em><strong>MITM</strong></em> is also called as <em>Man-in-the-middle attack  or Monkey-in-the-middle attack.</em></p>
+<ul>
+<li>A <strong>Man-in-the-Middle (MITM) attack</strong> is a type of cyber attack where an attacker secretly intercepts and potentially alters the communication between two parties without their knowledge. The attacker essentially places themselves in the middle of the communication, allowing them to eavesdrop, steal information, or modify the data being exchanged.</li>
+</ul>
+<p><img src="https://threatcop.com/blog/wp-content/uploads/2023/10/CISO-Mag.webp" alt="Man-in-the-Middle Attacks Explained: How to Stay Safe Online"></p>
+<h3 id="how-mitm-attacks-work"><strong>How MITM Attacks Work</strong></h3>
+<ol>
+<li>
+<p><strong>Interception</strong>: The attacker intercepts the communication channel between two parties. This can be achieved through various methods, such as exploiting unsecured Wi-Fi networks, spoofing network addresses, or manipulating routing tables.</p>
+</li>
+<li>
+<p><strong>Decryption</strong> (if applicable): If the communication is encrypted, the attacker may attempt to decrypt it. This can be done through various means, such as using stolen encryption keys or exploiting weaknesses in the encryption protocol.</p>
+</li>
+<li>
+<p><strong>Eavesdropping</strong>: The attacker listens to or reads the communication between the parties. This can involve capturing sensitive information like login credentials, financial data, or personal messages.</p>
+</li>
+<li>
+<p><strong>Modification</strong>: The attacker may alter the communication by injecting malicious content, changing messages, or redirecting the data to a different destination. This can lead to various forms of fraud or data breaches.</p>
+</li>
+<li>
+<p><strong>Impersonation</strong>: The attacker might impersonate one of the communicating parties to deceive the other party into revealing confidential information or performing certain actions.</p>
+</li>
+</ol>
+<h3 id="common-types-of-mitm-attacks"><strong>Common Types of MITM Attacks</strong></h3>
+<ol>
+<li>
+<p><strong>Wi-Fi Eavesdropping</strong></p>
+<ul>
+<li><strong>Description</strong>: The attacker intercepts data transmitted over an unsecured or poorly secured Wi-Fi network.</li>
+<li><strong>Example</strong>: An attacker sets up an open Wi-Fi network with a similar name to a legitimate one and intercepts data from users who connect to it.</li>
+</ul>
+</li>
+<li>
+<p><strong>Session Hijacking</strong></p>
+<ul>
+<li><strong>Description</strong>: The attacker steals an active session token or cookie to gain unauthorized access to a user’s session.</li>
+<li><strong>Example</strong>: An attacker intercepts a session cookie during a login process and uses it to impersonate the user.</li>
+</ul>
+</li>
+<li>
+<p><strong>DNS Spoofing (Cache Poisoning)</strong></p>
+<ul>
+<li><strong>Description</strong>: The attacker corrupts the DNS cache of a server or a client, redirecting users to malicious websites.</li>
+<li><strong>Example</strong>: An attacker modifies DNS records to redirect users from a legitimate website to a phishing site.</li>
+</ul>
+</li>
+<li>
+<p><strong>SSL Stripping</strong></p>
+<ul>
+<li><strong>Description</strong>: The attacker downgrades a secure HTTPS connection to an unsecured HTTP connection, allowing them to intercept unencrypted traffic.</li>
+<li><strong>Example</strong>: An attacker intercepts a request for an HTTPS website and redirects it to HTTP, capturing the data transmitted in plain text.</li>
+</ul>
+</li>
+<li>
+<p><strong>ARP Spoofing</strong></p>
+<ul>
+<li><strong>Description</strong>: The attacker sends falsified ARP (Address Resolution Protocol) messages to a local network, associating their MAC address with the IP address of another device.</li>
+<li><strong>Example</strong>: An attacker uses ARP spoofing to intercept traffic between a user and a gateway, capturing sensitive data.</li>
+</ul>
+</li>
+</ol>
+<h3 id="how-to-protect-against-mitm-attacks"><strong>How to Protect Against MITM Attacks</strong></h3>
+<ol>
+<li>
+<p><strong>Use Encryption</strong></p>
+<ul>
+<li><strong>Enable HTTPS</strong>: Ensure that websites use HTTPS to encrypt data transmitted between the client and server.</li>
+<li><strong>Use VPNs</strong>: Utilize Virtual Private Networks (VPNs) to encrypt data transmitted over unsecured networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify Certificates</strong></p>
+<ul>
+<li><strong>Check SSL/TLS Certificates</strong>: Always verify that SSL/TLS certificates are valid and issued by trusted Certificate Authorities (CAs).</li>
+</ul>
+</li>
+<li>
+<p><strong>Avoid Public Wi-Fi for Sensitive Transactions</strong></p>
+<ul>
+<li><strong>Use Secure Networks</strong>: Avoid performing sensitive transactions over public or unsecured Wi-Fi networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Implement Strong Authentication</strong></p>
+<ul>
+<li><strong>Multi-Factor Authentication (MFA)</strong>: Use MFA to add an extra layer of security beyond just passwords.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Network Security Tools</strong></p>
+<ul>
+<li><strong>Firewalls and Intrusion Detection Systems (IDS)</strong>: Deploy firewalls and IDS to monitor and protect against network threats.</li>
+</ul>
+</li>
+<li>
+<p><strong>Educate Users</strong></p>
+<ul>
+<li><strong>Awareness Training</strong>: Educate users about the risks of MITM attacks and how to recognize suspicious activities.</li>
+</ul>
+</li>
+</ol>
+</div>
+</body>
+
+</html>

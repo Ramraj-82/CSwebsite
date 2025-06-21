@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8. TCP &amp; UDP</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="tcp-vs-udp">TCP Vs UDP</h2>
+<ul>
+<li><em><strong>TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)</strong></em> are two fundamental protocols used for data transmission over the Internet and other networks. They operate at the transport layer of the Internet Protocol Suite (also known as the TCP/IP stack).</li>
+</ul>
+<h3 id="tcp-transmission-control-protocol">TCP (Transmission Control Protocol)</h3>
+<ol>
+<li>
+<p><strong>Purpose</strong>: TCP is designed to provide reliable, ordered, and error-checked delivery of data between applications running on hosts in a network.</p>
+</li>
+<li>
+<p><strong>Key Features</strong>:</p>
+</li>
+</ol>
+<ul>
+<li>It is a connection oriented protocol, it establish the connection by using <strong>3-way handshake method</strong> before transmitting the data.<br>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARkAAACzCAMAAACKPpgZAAABIFBMVEX///8AvvIAAADW6v9SqP9grv/G4f8AvPIAuPHz8/P5+fnZ2dn8/Pz29vbv7+/d3d2MjIysrKy2tralpaXT09Py/P7Dw8OH1/e87PsixPPMzMyUlJSz6Puamprl5eWHh4du1fZ7e3tlZWVycnLj+P2+vr6l5fqAgICV3/kyxvOpqalPT0+fn59cXFxpaWl1dXU3Nzf/6NxCQkIsLCwcHBz/vJX/nUj/2sY1NTX/7+X/7t3/zqoUFBT/xJr/zKf/wY7/iQD/1br/mT3/7OL/pFf/qWn/uoL/59D/lC//qWH/3ML/snTL8fzp+P5Pw/hZz/X/cQD/jR//kAD/2rj/p1X/lEj/uH7/vX7/gQD/pWv/w5//yZj/nUX/jS+kzv//48YgLZ/7AAAUiklEQVR4nO2dCWObSLLHy7wjw9VAQ9gxDBDBECYcumUZn5EvOfbOznhn4zc5Zvf7f4tXjeRDjiRfQrYc/ePYMkhq9HN1d3V3dQGw1FJLLbUQopSAS4l27ZAxx9LD+ZV1P0nNrMIZJke8q2O0Obfiq369MrfC7idGQQeTU1pQ4QKIslaTNPHBfCS3dUUFi9vijVar5UE1JnXO5Jstf04XMEVeAcHkRM7i6BatJKRtanV+XsWHXDsEzq7URc4VOZkjftXZEreoMK8LmCw1AVAKMrRVicyaCk06v9okWDzlCBdEnsgB1CsZrGcVT2wr87qAKSJcbHGWVdiMkiiBB+ua2RbnVDrP6ZTjt2JHNZAM5TTIKmHV3XoOZMDNMgpG1fUhzlJwNIhMUlXnVbqSZRZegi8pPrsUGfhapvCBO6/yl1pqqaWWWmqppZYqST/+bYJ+feorg59/HK/Xcyn99eqr8frhl7mUP0V/f/XDeL2bC5rXqyvj9erJybx99e7NOK2s/DyP4seQGRrN05MZb7av360+EZlXf/sJ9cuSzOrqb69Gybz56e3bJRkk8yO8u0lmaTNFOStvfniefdMTk4GffxqvH6W5FD9FT03ml9Xxejef4qfoqWvT6mj7e62Lmkfx0/TUZN6NB7MkM4bMsAleknl1ozoNe+2VJZnf3t4k8xb1y9JmVn+B1XE2892TgTcrE+YhfppL8VP09oe/vf71W/38bj5jbfj1pwnzQ3MpfZp++mFlrKe1sjKfSbU3E/yZlSdH8/rNb+8KDWv76ruh3s6n+Ofrz1zq5+KP92o+QC61CGRe/1Bc0N/nXOq3ZAYm+zzISK9fv/55UOFfvfkVf5lf0d+SeTb+DNPb1XcrxSRJ4Zlj8zu/FY3Xq2/+ftOfeUZkfryYFv/H8Of8jIaRuWEzv7HVpjfPg8yF/uu/51/mLytXXsOrlYG/wLrI1Tk3eNP1FGSu63/+92nLn6wlmUlakpmkF0hGVFUZCCkeX99LoVhTXvTtpouXR0asgZyAXwQX8/VrJ0Jn8ousb/dBvDwyVlNmSBxa81JzS/S8DH8nvhqYLc8nfppJgV/TLd9vATtn1jITwG4qvlcbie5/eWSAVjkKgWLKThMSvgaGClBBEwptqIauta7UFCGrAbQlHxRV1UHCyqRqFOKRvUUvkAyqSQIlUo2mlFiJ46BNJKSoTdW4agZKRZHrPh4T8VwIqY+1zFJtC8L0+nu8PDIamkggVIwMrBYkQlJ84JQCpTb4QQgtJRD5xFOUNqyD5ZgSn6DNeFYEwcjGixLJ8GHIA/69wDIlkCfsuCvBZkJbJWCklhprcmyKWF1QsWopJmiu41CREkEHJ61jXUrBVfHZINhuqI72XeWRkVUiewJWXzH1Nbi+++66nsqfUXX7lh2L5ZEhlcKliPgAKqry3MhIQ4dnskqsTVbqh2yTjgUBXyMTtgh9pz4wr2KbFrAvmi7JXErBzjBWCjJVgNozq023q8zaFGusG8SuAbtNRRv/pO+SzJ20JDNJSzKTVCqZvNHA//igsY/OXM4ONRo5O8xO4HBpY/BwrOZEhjkProu9lSKPniiTTP6hsflBOsthc+33PvSO8NBpr3uQ73xodLtwfArwZ9442+yOf/V8yLgZjmdC3ZBtyxlFUyaZP/CzN+A/a3DW/2sPTnaR1Ve0GGlnl509OOvDe4C9jQmvnj2ZEAcEbhwTfKBjp63gf97GrtsDoosUtNH96mWSkQ4OP2GVOTrrbxxsbzMy8PnjpwZsfux0dmDtP+/nS4aPQBFsQhxFB/tyGFkBdIJ5RzMhNEeeXm4LnPfeSyC9h4012NvdzXMBoPv1ZLOwmbWN7d1/TicjhQrhZ5eswrQ1N6KaE4tAr5GRVSAOYglHR7RlkmEtyAG2uwWZ/p/b3d7JZ4CdzQsycPx+OhmStLl206/YVOHlR4dxSwLEVJWQQAz6FRkJPEnR3BjS0RwHpbbAh53OJv48ho0DbHy38eH2eecINg86nU5+sAH994huem0SXMvUa80tbqvuRzYVZeHBhARHc3jDQSixVjEG7Qw2MhJYjk1AT2/4wtfIFKPfQbnXS5emmXOJ8fij7YzkWmFBiFvPIgcJPa5kOm0dY6BLMoKnp97FK7JrzxgzrX8pvsTURxNaYCQUV5ocx7UyDwk9sBVyb5sDuUbGwO7LIM1IcGzF4CxXjdlRqppiZmsQ2jGYMQ7dVYdNw+kgOx6+ud5yLbWknFm39E2jhIzZJxW6JCMlvi2DZ3gicNDGfyGioQ5QM4GaFkHF8nRo2gbPQR1M3bEENvkTuD545tQSHqo79trEogNC7cRLZ0noWjsjp+u8ZylqFbm4TcerAkTYSBkRRFacJZZqQTMBWMdzapW0POYsBeg8KRMmOB6pe/ozxKBxxAhxSYSE5NtfcYsuyYjYWnuibWETw0GL90FAU2CT1kjGq1Kkg7/UAwnaxAcJz/FNGdyamQLVH30V4/RAT483qB4ljFAz0qnx8Nxhl2SIzxbFtJpaC1pS0/S8qogHq05m1rA2JXZTw1qzRZKAAzWqGrRaSfF80wjUajmZyx7pAwtIyBsQqujUur3Fval7+jOhICX3LuNhmtHoQBBp6mXt+xO6JxlXnVsyrhmPm6SCUIsRqiGh23N6fXczV2hDzlRCF+OG747MUFJByK8PCIWWe+lTh/UBre+VzFCSICjUifw6DsyaQRpaigAcV3S23zmZC0kyXxBq4uAeW+vEXZK5IYnnDdbTB+6SzDeqcFXKPLRFIOMaIhCXdbzucK5kOFYWDan4Xbm/HzdRojN8s6sR5VHntH9yCND/eADQ6wFsHHQ6H/KdT53OZ4DdzmkOp0edTk/6iE+C0z8OO51Og33vze6yruuSjKITU+crBDQnIRAWQ3sPx2qSo4i2bLKJgDLS916S2d6B/AhON2Fv8/dt2NkBNkUJvd1dNisHRz3I/8UmKNn8//sc8jV2Fl+1O2VW7nG6JBNqbFXIcoitRB6YbGSvaDYpZrRFYlJrSszoI3RJpn/W28ePvXa02f/wdWNzSGZzd/eo0W0IaEYgwdpmo5vnezu7sLOd73W7XWALJF/KMZpLMoJtO1jx4xoRUxpajEzqKhoMzN7y/HJy1F61M/u7H4/QSM7g5HDja0HmrPPpUEIyjf28MBBY6zUaeX4snMExAuo2+gWZnZLJ4PjZqkgsakx0oKKZriIEVKuAjkNegbc8JSql/EsybG11Lwd5DU4+wNHxH53OHwdsFa2oTRJbAjjKB7XpGA6/nMMAFiNzflLKlV2SoWgT2JLwKiOjJJYohhTNxnDRIXMMSwOaTn2jB+qSzJfz/e45fu49OMGq8yezmT1seHePjvYbDWgc7m+fwl6P2c8ZNH7vI6A+GtD26X73QxnXdY0MSTW2fMinoMRIxIJi/QO5WLpugYUtsn37fPf9dVWb2FozWsdgjX4/Lx6C1N3A5qQrwT47i0/p9qEP7Etix/fz4mQpetGxEI/SkswkLclM0lQyikYFsGIRZKqVdJuIxSAjsKUAtiwpCBLgY9kDixIHbF4zXLuc8heCjGJTDWxqy6KtZzBY3hJj7JWo4fCSWk4XsBBkDHRnFOylqQpwce+XiLCQl1BFMo9fWxqnhSCDjoxK7TAUoyK8GSVFIvNkqMhsppzyF4KMoYAnekBNzSKDRR22k8y1JZXXLKWMAeWizOlJoeaCq6GnG9Ia4NCAUIq/iXgUj8y4meFDJ+E4YzHIXFeZ95gSLD3juLrKRmqLR6YkSZZW5bhWdBXguSSDzRittLl2oI9uG1wsMuZlFBMNQbDZuNt41BSEEnrr3FbVsb6dL10MMryJDBTTxY465NmUgxaFgGMDW7aih5JxTbvJbWVqyI9vwheCjKzyNDR0npoWmjwbJwnIyCaQuoL7gE7bLVraxKNkytT6QpCRjNgrZq8s/8JCLsjAPckQQ/PbW81K7N7mOS8EGfTprLggE9rD6XAkg1gQzt3J8AatrbPVa3FC/RnVQpDhVcN2iGPoNJQDudjvblFkwtZb7jTUFhQzarbXfduaVn9GtRBkgHdlwr4JMhChsBo2L8HWLUG6ZXpGUiw1abcyz7y1/oxqMcg8UK7hZK1WUqHuA2a3XioZIsbVeqsZaA9e836BZIhCa81W3U/FRy1elkCGF8XLfRzXrZif9tf71twfQoZ3wyhptTLbcB89Ap89GVIxNQ/UYmQmXd/aQaf0Iu63cej3JCMTS81a7cQzldlERsyejBmhI++u266qiiYnmmrhnDkqNTM7Bt1OIbY9g3iqCpbqIBOW2UOtu5pKR97n7mQEYjjVertZCcUZTnzOnoyUBfhZA1clShMS/EfR67BDHA3WwNc0SNyqSbLIddnWjlCLDMFg2ZxMFaKRwe6dyEi8wnY9tarUmGF0UaEyWmCe1oVACSO1KSVG4ngqQDbI5uRbTiVh2ZyaPkBTSRxV5ZueOMzmZN4vm5PsalGy1c7iB4TO30El1CYcCweEZXMidTSQGrghQMUAmeW5qpqQKTVFTiqCsE58IKEApMlshsZgj2wHmkZGINTLtrjEuUMs+ENVQgtcU70QdNWOKpnsW7Ya4J+Ur9lRmEIQVtXMihQ+c4NgHWwvILRSK7LkiJE3unA0gYwkm3bW5pp2WPLtwJ/Kn9GIcstOwwsy5Kr1kSwnaHOtKJzHPdqfioyrT0j7cqkhGWVrUGFEvdLitgI6IZPZ7PXcfWDK1SVsaesc58djpiRL1DMno3IcC3ZPzZICHqboWZMhbCsJV0r9MVlPT9C9AuzzBW2Mh/isybAo6Yxrl7CiTyo228YGpAq2yHyKb/XMyTBZJex6poYnAH6BKziiOrarWwAyJUgoYtEHYRVppTrWKL9PMkpEtQg8bNYVPjWVsXEmsyezfcC2cPTOO4dSr/PXUQfe7wCsnXe+5hsscvioVwRen3YON1lkNpz19zqdjnT+qXM4GnFdJhkH/WfVVRzgfXBEiMf5VrMnMwg6X5PgBD/pWg4nRf6dHHpfWK4VONpkZP4Pv+/CMZL5Z59tfYHTk0Gg+pVKJCNQbGFECwxNl8B0QYrHDL9KsJnTXq8Pnb0u+5xrG3C6cdiHr597e9IVmbU//tzuAhzv9Hpn/Y+9Xo+RgdP+9fd5eVGv27t5jlDyoz1mMxvSn93zI9jr59vb18jkUu/TGhz3c+Gf/QP2fEbm/IWT2cVmpYjM756y2rT5Oc//ZDmbNo4GZFg7s3YisVRGo7XpxkapF0jmtNvt5oeb3aMGy2LF8lid9vZ2uqcnG8fdbuPoCM9+/fKhi+DesyRYfbZRClvk7u7uyPvMiYxCAWIdXSYSj56YPRlhv0iryJItYp2S2HdBztmvEp7J2WmhyMM42DmUs6N4pMHyNF5XSWQUQwBiYIsrKi6IYAQaGBRs3o1u9N3fmz9jamIoqIpDwtDMwGWxEaBZEIu8cmNp43sjo3iibKUuLTLsswOixlLIaQaQ75wMEMujumuIOGi6IIMDhdRdODKieYc0ZveQZSq2q7q6aIaWzwKixRhcW7QFuJmp/bmTieutVhI4FpnR1JUkGvygBVbEGrbAIBMWMyGznIajz3zuZPDSFUuv1tutpJIaZKZTNdMzlz1/MgPJopX6ra1WFukiX87mlBtaFDID8aLpZG2u5XuaIj9uvlwaLG7JBH/KRVW98X6LRWYg3gjtZItrVVXqPjjB6SAbsBtZKrgsOzBoN5LfLSKZgZCPmnDcetWm9wmWKXZgmpqBXbUusJwksWETUAXqlD46mJXu5s8Qi3pN5BM44Z16d/RaKDVDsEJTHbygIqNrY/Nsa/yIFp3MQMiHLdat15xbF6ZMW6VsosrMBiScEAZklBdJZiBiapUWx9Ur+mQ+Sgqhxm6qYlopWzJg8ResNskvmsxAxNSDNvKJYmtM7y54muoIqmZTU8pkMH2qubzHErYrN7Z2XJDRWSzYcEHq+vILneI73HoLpkfpkVGvYVrdQj6e9tDV8CGZigFpTAbxhiM340qm1NusvLAemM2I0h3waaqace/efUgmY12W1hKDNCNZ1U08Zlq2mohZ1TdpJYpJ20tk39mifOI5ENgJDsFaaVitlJRRepZjbZc6PvJJbHofPkMyxOES4lZ5S0xM3fRcaEpsLYbZjBuYvJ3wCeiIxKF4LiPNwlqqii9JfllJ2mc9C6FQO2N8nFC80yVftcBmQHzX12wzDTPbdggUQVEJrwSeamV8BnoSoi9QnHNtxsa3qiwkb7Yf4FKlzM9IoqaylLhZeiufIZnEZcnHAtOGxIxN7Mrq2G7VwRUToiQ+mE20mTTNoBo6FJ9sgYe1KHCriptNf/+Hq7wZckkwYpYyuO3r5uRgv4vaZNsaSKmVYm9GPDktwgNc25Z1mVB2Z0kSg6lYTpVCqhqgqWy900rxZaWF/JS9diDIVholODytxiN8zGG/ch9/xq2G1fkFhM1nVUXmWYhym6sH2jCClnCDWPZ7eXr83XeUPV7zXInjiWkHCdtfSS23yUWsCXp5PvCDJfGuaVebLWygm8qSzLdiWXC3lllwv5VcX4+KjQxLMjdkXNxeY0lmkpZkJunq/k3szpDS8H6RLFUnu6lbEaFQhDPkxTf2LCjuJDkIYZDyibeTfLSeDZmdDyzf7/bn7mF/v3u204WzQ4CD7e7hH/kekvjC7mW21z/obv4LjjcAjouwF2n3vLtzWs6VPRsyg9vaHfTRLIrwupPtYwk+9OFkN19DMtuMzMHuOctm+hXJfO0XKV5ZuOJoeN3M9HzIfGS3u+v/9YmFZq714SDf3IHDT52/9q/IrPUPPhxKLIS1c9b/iwWrstCzsnNKP5Fu2AyaxOHRIPDw8/kas5n+4TUyG5B3fx+xGSSz+z2QkTrsbrUMAUvRfpwjmY3TInt00c6sfTnBxqYgg00OexWrTSVlaH/971Le9s7696/DB4ObRPYOWfZ+/LAs7HJz+/y0c9jPv2I9Y6cbH/5z2ul8KVCs9bH2dfpf8PmbT/oBllpqqaWWAvh/KviHW5+CJyQAAAAASUVORK5CYII=" alt="TCP Three-Way Handshake ...">
+<ul>
+<li>It is a <strong>reliable protocol</strong> and provides <strong>assurance of data packets delivery.</strong></li>
+<li>TCP is <strong>slower than UDP</strong> because it does <strong>segmentation, assign the sequence number, acknowledge</strong> to each data packet after received to the destination.</li>
+<li>It also perform <strong>error checking</strong> by using check sum, whenever packet is missing it will fetch from source and retransmit the data to destination.</li>
+<li>It use <strong>flow control mechanisms</strong>, to match the transmission rate of the sender with the capacity of the receiver.</li>
+<li><strong>Size</strong>: Header size is 20 bytes(160 bits).</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p><strong>Typical Uses</strong>:</p>
+<ul>
+<li>Web browsing (HTTP/HTTPS)</li>
+<li>Email (SMTP, POP3, IMAP)</li>
+<li>File transfer (FTP)</li>
+<li>Remote access (SSH, Telnet)</li>
+</ul>
+</li>
+</ol>
+<h3 id="udp-user-datagram-protocol">UDP (User Datagram Protocol)</h3>
+<ol>
+<li>
+<p><strong>Purpose</strong>: UDP provides a way to send data between applications with minimal overhead but without the reliability and ordering guarantees of TCP.</p>
+</li>
+<li>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Connectionless</strong>: No connection is established before data is sent; each message is sent independently.</li>
+<li>It is  <strong>Unreliable</strong> protocol and there are no guarantees that data packets will be delivered, arrive in order, or be free of duplication.</li>
+<li><strong>No Flow Control</strong>: Does not manage the rate of data transmission; sends data as quickly as the application and network allow.</li>
+<li><strong>Datagram-Based</strong>: Data is sent as discrete packets called datagrams, each containing its own header information.</li>
+<li>UDP is <strong>faster than TCP.</strong></li>
+<li><strong>Size</strong>: Header size is 8 bytes (64 bits).</li>
+</ul>
+</li>
+<li>
+<p><strong>Typical Uses</strong>:</p>
+<ul>
+<li>Streaming media (audio, video)</li>
+<li>Online gaming</li>
+<li>VoIP (Voice over IP)</li>
+<li>DNS (Domain Name System) queries</li>
+</ul>
+</li>
+</ol>
+<h3 id="summary">Summary</h3>
+<ul>
+<li><strong>TCP</strong> is suitable for applications where data integrity and order are critical, and it provides mechanisms for handling network issues.</li>
+<li><strong>UDP</strong> is used when speed is more important than reliability, and some data loss or out-of-order packets can be tolerated.</li>
+</ul>
+<p><strong>NOTE</strong>: Both protocols have their own strengths and are chosen based on the requirements of the application and the nature of the network communication needed.</p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>26. Cross-site scripting Attack</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="cross-site-scripting-xss-attack">Cross-site scripting (XSS) Attack</h2>
+<p><img src="https://www.hubspot.com/hs-fs/hubfs/Google%20Drive%20Integration/draft%20-%20cross%20site%20scripting.png?width=650&amp;name=draft%20-%20cross%20site%20scripting.png" alt="Cross Site Scripting (XSS): What Is It &amp; What's an Example?"></p>
+<ul>
+<li><strong>Cross-Site Scripting (XSS)</strong> is a type of web security vulnerability that allows malicious code to be injected into a web application. This code can then be executed by other users, potentially leading to unauthorized access, data theft, or other malicious activities.</li>
+<li><strong>XSS is a vulnerability</strong> that is caused by a lack of data sanitization. It occurs when the data received from the user is sent in the response without being sanitized.</li>
+</ul>
+<h3 id="types-of-xss">Types of XSS:</h3>
+<ol>
+<li><strong>Reflected XSS:</strong>
+<ul>
+<li>Occurs when malicious code is injected into a URL or form field and reflected back to the user’s browser.</li>
+<li>Example: A website that doesn’t properly sanitize user input might allow a malicious user to inject JavaScript code into a search query.</li>
+</ul>
+</li>
+<li><strong>Stored XSS:</strong>
+<ul>
+<li>Occurs when malicious code is stored in a database or other persistent storage on the server and is later executed when a user visits the affected page.</li>
+<li>Example: A blog platform that doesn’t sanitize user-generated content might allow an attacker to inject malicious code into a blog post.</li>
+</ul>
+</li>
+<li><strong>DOM-based XSS:</strong>
+<ul>
+<li>Occurs when malicious code is executed within the Document Object Model (DOM) of the browser, without necessarily being reflected or stored on the server.</li>
+<li>Example: A website that uses JavaScript to dynamically generate content might be vulnerable to DOM-based XSS if it doesn’t properly sanitize user input.</li>
+</ul>
+</li>
+</ol>
+<h2 id="how-does-xss-work"><strong>How does XSS work?</strong></h2>
+<p>Like other web attack methods, XSS is a vulnerability that is caused by a lack of data sanitization. It occurs when the data received from the user is sent in the response without being sanitized.</p>
+<p>Let’s look at an example to understand XSS attacks better.</p>
+<p><img src="https://ld-images-2.s3.us-east-2.amazonaws.com/Detecting+Web+Attacks/images/XSS-vulnerable-code.png" alt=""></p>
+<p>First, we’ll examine the piece of code above. What it does is actually quite simple. It simply displays whatever is entered in the ‘user’ parameter. If we enter “LetsDefend” as the ‘user’ parameter, we will see the words “Hello LetsDefend”.</p>
+<p><img src="https://ld-images-2.s3.us-east-2.amazonaws.com/Detecting+Web+Attacks/images/XSS-image-1.png" alt=""></p>
+<p>So far there is no problem. If we enter the appropriate data in the user parameter, we are greeted with a warm welcome. But, as we have already seen, there is no control mechanism for the user parameter. This means that whatever we put in the “user” parameter will be included in the HTTP response we receive back.</p>
+<p>So what would happen if we didn’t enter a normal value, but instead a payload that would trigger a popup?</p>
+<p>Payload:  <strong></strong></p>
+<p><img src="https://ld-images-2.s3.us-east-2.amazonaws.com/Detecting+Web+Attacks/images/XSS-popup.png" alt=""></p>
+<p>Because whatever is put in the ‘user’ parameter is included directly in the HTTP response, the javascript code we wrote worked and a pop-up window appeared on the screen.</p>
+<p>This is exactly how XSS works. Because the value entered by the user is not validated, the attacker can enter any javascript code and get the result they want. Another question is, what if the attacker wants to redirect the user to a malicious site?</p>
+<p>Payload:  <strong></strong></p>
+<p><a href="https://letsdefend.io/xss_example.php?user=%3Cscript%3Ewindow.location=%27https://google.com%27%3C/script%3E">https://letsdefend.io/xss_example.php?user=&lt;script&gt;window.location='https://google.com'&lt;/script&gt;</a></p>
+<p><img src="https://ld-images-2.s3.us-east-2.amazonaws.com/Detecting+Web+Attacks/images/XSS-google-redirect-1.png" alt=""></p>
+<p>Of course we are not going to direct you to a web application. Directing you to Google will be sufficient as an example. When the user clicks on the URL he will be directed to Google instead of the perfect LetsDefend web application.</p>
+<p><img src="https://app-ld-img.s3.us-east-2.amazonaws.com/training/img60-google.png" alt=""></p>
+<h2 id="how-attackers-take-advantage-of-xss-attacks"><strong>How Attackers Take Advantage of XSS Attacks</strong></h2>
+<p>Because XSS is a client-based attack method, attackers can do the following with an XSS attack:</p>
+<ul>
+<li>Steal a user’s session information</li>
+<li>Capture credentials</li>
+<li>Etc.</li>
+</ul>
+<h2 id="detecting-xss-attacks"><strong>Detecting XSS Attacks</strong></h2>
+<ul>
+<li><strong>Look for keywords:</strong> The easiest way to detect XSS attacks is to look for keywords such as “alert” and “script” that are commonly used in XSS payloads.</li>
+<li><strong>Learn about commonly used XSS payloads:</strong> Attackers tend to use the same payloads to look for vulnerabilities before exploiting an XSS vulnerability. Therefore, familiarizing yourself with commonly used XSS payloads would make it easier for you to detect XSS vulnerabilities. You can examine some commonly used payloads  <a href="https://github.com/payloadbox/xss-payload-list">here</a>.</li>
+<li><strong>Check for the use of special characters:</strong> Check data coming from a user to see if any special characters commonly used in XSS payloads, such as greater than (&gt;) or less than (&lt;), are present.</li>
+<li>Remaining steps are same like SQL injection attack
+<ul>
+<li>Check the no of requests</li>
+<li>decode URLs</li>
+<li>user agent information</li>
+<li>Source IP address reputation</li>
+<li>Carried out by which tool</li>
+<li>Response status</li>
+</ul>
+</li>
+</ul>
+</div>
+</body>
+
+</html>

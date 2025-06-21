@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.DNS</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="what-is-dns-and-how-does-it-work">What is DNS and How does it work</h2>
+<ul>
+<li><strong>DNS</strong>, or the <strong>Domain Name System</strong>, is like the internet’s phonebook. It translates human-readable domain names (like [invalid URL removed]) into machine-readable IP addresses (like 142.250.186.142). This translation allows computers to find and connect to websites, servers, and other devices on the internet.</li>
+<li>Simply it maps domain names to IP address.</li>
+<li>Default <strong>Port no is 53</strong></li>
+</ul>
+<p><img src="https://blogs.manageengine.com/wp-content/uploads/2022/10/Screenshot-2022-10-17-at-5.27.27-PM.png" alt=""></p>
+<h3 id="how-does-dns-work">How Does DNS Work?</h3>
+<ol>
+<li>
+<p><strong>Query:</strong> When you type a domain name into your web browser, your computer sends a DNS query to a local DNS server.</p>
+</li>
+<li>
+<p><strong>Search:</strong> The local DNS server checks its cache for the IP address associated with that domain name. If it’s found, it returns the IP address.</p>
+</li>
+<li>
+<p><strong>Recursive Query:</strong> If the IP address isn’t in the local DNS server’s cache, it sends a recursive query to a root DNS server.</p>
+</li>
+<li>
+<p><strong>Root Server:</strong> The root DNS server provides the IP address of a top-level domain (TLD) server (like .com, .net, .org).</p>
+</li>
+<li>
+<p><strong>TLD Server:</strong> The TLD server provides the IP address of the authoritative DNS server for that domain.</p>
+</li>
+<li>
+<p><strong>Authoritative Server:</strong> The authoritative DNS server returns the IP address of the website you’re trying to access.</p>
+</li>
+<li>
+<p><strong>Connection:</strong> Your computer uses the IP address to connect to the website and load its content.</p>
+</li>
+</ol>
+<p><strong>NOTE:</strong> This process happens only when the IP address not resolved in local DNS server, after that the IP will store in Local DNS( cache) to reduce the time and faster services.</p>
+<h3 id="dns-attacks">DNS attacks:</h3>
+<ol>
+<li><strong>DNS Hijacking</strong> – Alter DNS records to redirect traffic from legitimate sites to malicious sites.</li>
+<li><strong>DNS cache poisoning</strong> – Inject corrupt DNS data to DNS resolver cache to redirect users to malicious sites.</li>
+<li><strong>DNS Amplification</strong> – Overwhelm a target with large DNS responses using small or spoofed quries.</li>
+<li><strong>DNS Flooding</strong> – Send a large volume of DNS quires to target DNS server to overwhelm or shutdown the server.</li>
+<li><strong>DNSSEC (DNS Security Extensions)</strong> – Exploit vulns of DNS security extension to by pass the protection.</li>
+</ol>
+<h3 id="why-dns-is-important">Why DNS is Important</h3>
+<ul>
+<li>
+<p><strong>Ease of Use:</strong> Humans can remember domain names much easier than IP addresses.</p>
+</li>
+<li>
+<p><strong>Efficiency:</strong> DNS reduces the amount of information that needs to be transmitted over the network.</p>
+</li>
+<li>
+<p><strong>Flexibility:</strong> DNS allows websites to be moved to different servers without affecting their domain names.</p>
+</li>
+</ul>
+<h2 id="interview-questions">Interview questions</h2>
+<h3 id="technical-questions"><strong>Technical Questions</strong></h3>
+<ol>
+<li>
+<p><strong>Explain the DNS Resolution Process:</strong></p>
+<ul>
+<li><strong>Answer:</strong> DNS resolution starts when a user enters a URL in their browser. The browser first checks its local cache to see if it already has the IP address for the domain. If not, it sends a DNS query to a DNS resolver (usually provided by the ISP). The resolver first queries a root DNS server, which directs it to a TLD (Top-Level Domain) server based on the domain extension (e.g., <code>.com</code>). The TLD server then directs the resolver to the authoritative DNS server for the specific domain. The authoritative server responds with the IP address. The resolver caches this information and returns it to the browser, which then connects to the server using the IP address to fetch the requested webpage.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is DNS Cache Poisoning and How Can It Be Mitigated?</strong></p>
+<ul>
+<li><strong>Answer:</strong> DNS cache poisoning involves corrupting the DNS cache of a resolver with false information, redirecting users to malicious sites. Mitigation strategies include implementing DNSSEC (which adds cryptographic signatures to DNS data to ensure its authenticity), using secure and updated DNS software, and regularly clearing DNS caches to minimize the impact of potential poisoning.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are DNS Record Types and Their Uses?</strong></p>
+<ul>
+<li><strong>Answer:</strong>
+<ul>
+<li><strong>A Record:</strong> Maps a domain to an IPv4 address (e.g., <code>www.example.com</code> to <code>192.0.2.1</code>).</li>
+<li><strong>AAAA Record:</strong> Maps a domain to an IPv6 address (e.g., <code>www.example.com</code> to <code>2001:db8::1</code>).</li>
+<li><strong>CNAME Record:</strong> Canonical Name record, which aliases one domain to another (e.g., <code>blog.example.com</code> to <code>www.example.com</code>).</li>
+<li><strong>MX Record:</strong> Mail Exchange record, which specifies mail servers for handling emails (e.g., <code>example.com</code> with <code>mail.example.com</code>).</li>
+<li><strong>TXT Record:</strong> Holds arbitrary text, often used for domain verification or SPF (Sender Policy Framework) records.</li>
+<li><strong>NS Record:</strong> Name Server record, which specifies the DNS servers authoritative for a domain.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What is DNS Tunneling and How Can It Be Detected?</strong></p>
+<ul>
+<li><strong>Answer:</strong> DNS tunneling involves encoding data within DNS queries and responses, often used for covert communication or data exfiltration. It can be detected by monitoring DNS traffic for unusual patterns, such as high query volumes to unusual domains, or abnormally long domain names. Tools like Wireshark, DNS monitoring systems, and anomaly detection algorithms can help identify and analyze such activity.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Does DNSSEC Improve Security?</strong></p>
+<ul>
+<li><strong>Answer:</strong> DNSSEC (Domain Name System Security Extensions) adds cryptographic signatures to DNS records, ensuring that the data returned by DNS queries is authentic and has not been tampered with. It prevents attacks such as cache poisoning and spoofing by allowing clients to verify the integrity and authenticity of the DNS data they receive.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is a DNS Zone Transfer and Why Might It Be a Security Concern?</strong></p>
+<ul>
+<li><strong>Answer:</strong> A DNS zone transfer is a mechanism used to replicate DNS records between DNS servers. It can be a security concern if unauthorized users gain access to this information, as it could expose internal domain structure and potentially sensitive information. To mitigate this risk, zone transfers should be restricted to trusted IP addresses, and access controls should be enforced.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Would You Investigate Suspicious DNS Activity?</strong></p>
+<ul>
+<li><strong>Answer:</strong> To investigate suspicious DNS activity, start by analyzing DNS logs for unusual patterns, such as high volumes of requests to unfamiliar domains or irregular query types. Use network monitoring tools to correlate DNS traffic with other network activities. Look for indicators of known threats or anomalies. Employ threat intelligence feeds to check if the suspicious domains are associated with malicious activities. Finally, isolate and analyze affected systems to understand the scope of the issue.</li>
+</ul>
+</li>
+</ol>
+<h3 id="scenario-based-questions"><strong>Scenario-Based Questions</strong></h3>
+<ol>
+<li>
+<p><strong>Scenario: Suspicious Domain Request</strong></p>
+<ul>
+<li><strong>Answer:</strong> First, verify the legitimacy of the suspicious domain by checking it against threat intelligence databases. Analyze the DNS query patterns and volume to identify any unusual behavior. Cross-reference with other logs (e.g., firewall, web proxy) to see if there is any associated suspicious activity. If needed, block the domain and escalate the issue to your incident response team for further investigation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: DNS Exfiltration Incident</strong></p>
+<ul>
+<li><strong>Answer:</strong> To address a potential DNS exfiltration incident, first analyze the DNS traffic for anomalies such as high query volumes or unusual domain names. Look for patterns indicating data encoding within DNS queries. Use DNS query logs to identify the source of the traffic and correlate with other network activity. If exfiltration is confirmed, block the malicious domains, contain the breach, and investigate how the data was extracted.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: Identifying Malicious DNS Requests</strong></p>
+<ul>
+<li><strong>Answer:</strong> To identify malicious DNS requests, examine DNS logs for domains associated with known malware or command and control servers. Look for patterns such as a high number of requests to new or unknown domains, or domain names that are unusually long or complex. Utilize DNS analysis tools and threat intelligence feeds to help identify and validate malicious activity.</li>
+</ul>
+</li>
+</ol>
+<h3 id="general-security-questions"><strong>General Security Questions</strong></h3>
+<ol>
+<li>
+<p><strong>How Do You Stay Current with DNS and Security Trends?</strong></p>
+<ul>
+<li><strong>Answer:</strong> I stay current by regularly reading industry blogs, security bulletins, and whitepapers from organizations like SANS, ISC, and CERT. I also follow relevant cybersecurity forums and participate in webinars and conferences. Additionally, I subscribe to threat intelligence feeds and maintain certifications to ensure I’m aware of the latest threats and best practices.</li>
+</ul>
+</li>
+<li>
+<p><strong>What Tools and Techniques Do You Use for DNS Analysis?</strong></p>
+<ul>
+<li><strong>Answer:</strong> I use tools like Wireshark for packet capture and analysis, DNS query log analyzers to review DNS traffic, and SIEM systems for real-time monitoring and correlation of DNS-related events. Additionally, I use network intrusion detection systems (NIDS) and DNS monitoring tools to detect anomalies and potential threats.</li>
+</ul>
+</li>
+<li>
+<p><strong>Describe a Time When You Solved a Complex DNS Issue.</strong></p>
+<ul>
+<li><strong>Answer:</strong> In a previous role, I handled a situation where users were intermittently unable to access a critical internal application due to DNS resolution failures. I analyzed DNS logs and found that the issue was caused by a misconfigured DNS server that was intermittently failing to resolve internal names. I corrected the configuration, updated the DNS records, and implemented monitoring to prevent future issues. The application became consistently accessible, and user complaints were resolved.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Do You Handle False Positives in DNS Alerts?</strong></p>
+<ul>
+<li><strong>Answer:</strong> I handle false positives by first validating the alerts through additional context and correlation with other data sources. This involves cross-referencing with threat intelligence and other logs to determine if the alert is indicative of real malicious activity. I refine alerting rules to reduce the likelihood of false positives and continually review and adjust thresholds based on historical data and evolving threats.</li>
+</ul>
+</li>
+</ol>
+<h3 id="behavioral-questions"><strong>Behavioral Questions</strong></h3>
+<ol>
+<li>
+<p><strong>Describe a Situation Where You Had to Collaborate with Other Teams to Resolve a DNS Issue.</strong></p>
+<ul>
+<li><strong>Answer:</strong> In a previous role, I worked with the network engineering team to resolve an issue where users experienced intermittent access problems. We discovered that the DNS issues were caused by a network configuration change. I collaborated with the network team to review the configuration, adjust the DNS settings, and test the resolution. Effective communication and teamwork led to a quick resolution of the issue and restored normal operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Do You Prioritize Multiple Security Incidents Related to DNS?</strong></p>
+<ul>
+<li><strong>Answer:</strong> I prioritize incidents based on their potential impact and urgency. Critical incidents that affect the availability or security of essential services are addressed first. I assess the scope and severity of each incident and allocate resources accordingly. I also use a structured incident response process, involving initial assessment, containment, eradication, and recovery phases, to ensure all incidents are managed efficiently.</li>
+</ul>
+</li>
+</ol>
+</div>
+</body>
+
+</html>

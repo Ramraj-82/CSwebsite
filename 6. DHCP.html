@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. DHCP</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="dhcp--dynamic-host-configuration-protocol">DHCP ( Dynamic Host configuration Protocol)</h2>
+<ul>
+<li><em><strong>DHCP</strong></em> is a network management protocol used to automatically assign IP addresses and other network configuration parameters (subnet mask, Default gateway IP, &amp; DNS server) to devices on a network. This helps devices communicate on an IP network without requiring manual configuration.</li>
+<li>This automatic assignment of IP address to the devices can greatly reduce the work load of network admin as no need to assign the IP address manually.</li>
+<li>Default Ports for <em><strong>DHCP client (68) and DHCP server (67)</strong></em></li>
+</ul>
+<h3 id="how-dhcp-works--dora-process">How DHCP works ( DORA Process):</h3>
+<p><img src="https://media.licdn.com/dms/image/v2/C5612AQE_e1PyTz9LRQ/article-inline_image-shrink_1000_1488/article-inline_image-shrink_1000_1488/0/1534318678866?e=1729123200&amp;v=beta&amp;t=yEPPVOwPnOsZVRy97hl00pP_mBr8YyahLFVbHwNx2FM" alt="What Is DHCP and How It Works"></p>
+<ol>
+<li>
+<p><strong>DHCP Discover:</strong></p>
+<ul>
+<li>When a device (client) connects to a network, it does not initially have an IP address. It sends a broadcast message known as a DHCP Discover packet to the network, looking for a DHCP server.</li>
+</ul>
+</li>
+<li>
+<p><strong>DHCP Offer:</strong></p>
+<ul>
+<li>A DHCP server on the network receives the Discover message and responds with a DHCP Offer packet. This packet contains an available IP address and other configuration details (e.g., subnet mask, default gateway, DNS servers) that the server is willing to assign to the client.</li>
+</ul>
+</li>
+<li>
+<p><strong>DHCP Request:</strong></p>
+<ul>
+<li>The client receives one or more DHCP Offers and sends a DHCP Request packet to the DHCP server, indicating that it wants to use the offered IP address. This packet is also broadcast to inform other DHCP servers that the client has accepted the offer from a specific server.</li>
+</ul>
+</li>
+<li>
+<p><strong>DHCP Acknowledgment:</strong></p>
+<ul>
+<li>The DHCP server receives the Request packet and sends a DHCP Acknowledgment packet back to the client. This packet confirms that the IP address has been assigned and provides the final configuration details. At this point, the client configures its network interface with the provided IP address and settings.</li>
+</ul>
+</li>
+</ol>
+<h3 id="key-components-of-dhcp"><strong>Key Components of DHCP:</strong></h3>
+<ul>
+<li>
+<p><strong>DHCP Server:</strong> The server that holds a pool of IP addresses and configuration information. It assigns IP addresses to clients and manages the allocation.</p>
+</li>
+<li>
+<p><strong>DHCP Client:</strong> The device requesting network configuration information. Examples include computers, printers, and smartphones.</p>
+</li>
+<li>
+<p><strong>DHCP Lease:</strong> The duration for which the IP address is assigned to the client. When the lease expires, the client must request a renewal or a new address.</p>
+</li>
+<li>
+<p><strong>DHCP Scope:</strong> A range of IP addresses that the DHCP server can assign to clients. Each scope is typically configured with a range of IP addresses, subnet mask, and other network settings.</p>
+</li>
+</ul>
+<h3 id="benefits-of-dhcp"><strong>Benefits of DHCP:</strong></h3>
+<ol>
+<li>
+<p><strong>Simplifies Network Management:</strong></p>
+<ul>
+<li>DHCP automates the IP address assignment process, reducing the need for manual configuration and minimizing errors.</li>
+</ul>
+</li>
+<li>
+<p><strong>Efficient IP Address Utilization:</strong></p>
+<ul>
+<li>By dynamically allocating IP addresses and managing leases, DHCP helps ensure that IP addresses are used efficiently and can be reused when devices disconnect.</li>
+</ul>
+</li>
+<li>
+<p><strong>Centralized Configuration:</strong></p>
+<ul>
+<li>Network settings like DNS servers and default gateways can be centrally configured and managed through the DHCP server, making it easier to apply changes network-wide.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scalability:</strong></p>
+<ul>
+<li>DHCP simplifies network expansion by automatically assigning IP addresses to new devices without requiring manual intervention.</li>
+</ul>
+</li>
+</ol>
+<h3 id="common-dhcp-issues"><strong>Common DHCP Issues:</strong></h3>
+<ol>
+<li>
+<p><strong>IP Address Conflicts:</strong></p>
+<ul>
+<li>Occur if two devices are assigned the same IP address. This can be caused by configuration errors or issues with the DHCP server.</li>
+</ul>
+</li>
+<li>
+<p><strong>Exhausted IP Pool:</strong></p>
+<ul>
+<li>If the DHCP server’s pool of available IP addresses is exhausted, new devices may be unable to obtain an IP address.</li>
+</ul>
+</li>
+<li>
+<p><strong>DHCP Server Unavailability:</strong></p>
+<ul>
+<li>If the DHCP server is down or unreachable, clients will not be able to obtain IP addresses, leading to network connectivity issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Misconfigured DHCP Settings:</strong></p>
+<ul>
+<li>Incorrect configuration of scopes or network parameters can lead to clients receiving incorrect settings.</li>
+</ul>
+</li>
+</ol>
+<h2 id="interview-questions-">Interview questions :</h2>
+<h3 id="technical-questions"><strong>Technical Questions</strong></h3>
+<ol>
+<li>
+<p><strong>What is DHCP and How Does It Work?</strong></p>
+<ul>
+<li><strong>Answer:</strong> DHCP (Dynamic Host Configuration Protocol) is used to automatically assign IP addresses and other network configuration parameters to devices on a network. When a device connects to a network, it sends a DHCP Discover message. The DHCP server responds with a DHCP Offer containing an IP address and configuration details. The device then sends a DHCP Request to accept the offer, and the server confirms with a DHCP Acknowledgment. The device is then configured with the provided settings.</li>
+</ul>
+</li>
+<li>
+<p><strong>What Are the Common DHCP Attack Vectors?</strong></p>
+<ul>
+<li><strong>Answer:</strong> Common DHCP attack vectors include:
+<ul>
+<li><strong>DHCP Spoofing:</strong> An attacker sets up a rogue DHCP server to provide incorrect IP configurations to clients, potentially redirecting traffic or causing network disruptions.</li>
+<li><strong>DHCP Exhaustion Attack:</strong> An attacker floods the DHCP server with requests, exhausting the pool of available IP addresses and preventing legitimate devices from obtaining IP addresses.</li>
+<li><strong>Man-in-the-Middle Attacks:</strong> By using DHCP spoofing, attackers can intercept or manipulate traffic between clients and legitimate servers.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>How Can You Mitigate DHCP Spoofing?</strong></p>
+<ul>
+<li><strong>Answer:</strong> Mitigate DHCP spoofing by:
+<ul>
+<li><strong>Implementing DHCP Snooping:</strong> This network security feature helps to ensure that only authorized DHCP servers can respond to DHCP requests.</li>
+<li><strong>Configuring Port Security:</strong> Limit the number of devices that can connect to each switch port and restrict DHCP traffic to trusted ports.</li>
+<li><strong>Using Static IP Addresses:</strong> For critical devices, use static IP addresses to avoid reliance on DHCP for those specific devices.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>What is a DHCP Lease and How Does It Impact Network Security?</strong></p>
+<ul>
+<li><strong>Answer:</strong> A DHCP lease is the time period for which an IP address is assigned to a client. Once the lease expires, the client must request a renewal or a new IP address. In terms of security, long lease times can increase the risk of IP address conflicts or make it harder to detect unauthorized devices. Shorter leases can help in more dynamic environments but require more frequent renewals.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Would You Detect and Respond to a DHCP Exhaustion Attack?</strong></p>
+<ul>
+<li><strong>Answer:</strong> Detect a DHCP exhaustion attack by monitoring the DHCP server logs for unusually high numbers of requests and checking for IP address pool depletion. Respond by implementing rate limiting on DHCP requests, increasing the pool size if possible, and setting up alerts for unusual DHCP traffic patterns. Additionally, you may need to work with network engineering to secure the DHCP server and review access controls.</li>
+</ul>
+</li>
+</ol>
+<h3 id="scenario-based-questions"><strong>Scenario-Based Questions</strong></h3>
+<ol>
+<li>
+<p><strong>Scenario: Unusual Network Behavior Linked to DHCP Issues</strong></p>
+<ul>
+<li><strong>Question:</strong> You notice unusual network behavior and suspect it might be related to DHCP issues. How would you investigate?</li>
+<li><strong>Answer:</strong> Start by examining DHCP server logs for anomalies or errors. Check for signs of unauthorized DHCP servers or high numbers of DHCP requests from a single source. Use network monitoring tools to analyze DHCP traffic and correlate it with other network activities. Look for patterns that might indicate DHCP spoofing or exhaustion. Cross-reference with client logs to identify any affected devices and determine the root cause of the issue.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: Suspected DHCP Spoofing Attack</strong></p>
+<ul>
+<li><strong>Question:</strong> During a routine security check, you suspect that a DHCP spoofing attack might be occurring. What steps would you take to confirm and mitigate the attack?</li>
+<li><strong>Answer:</strong> Confirm the attack by analyzing DHCP traffic for signs of rogue DHCP servers, such as unexpected DHCP Offer packets from unauthorized sources. Use network sniffing tools to capture and inspect DHCP packets. Implement DHCP snooping on switches to filter out unauthorized DHCP responses. Isolate the rogue DHCP server if identified, and work with network teams to remove or block it. Enhance monitoring and alerting to detect any future occurrences.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: DHCP Server Downtime</strong></p>
+<ul>
+<li><strong>Question:</strong> The DHCP server goes down, and devices on the network are unable to obtain IP addresses. How would you handle this situation?</li>
+<li><strong>Answer:</strong> Quickly determine if the issue is with the DHCP server itself or network connectivity. Check server status, logs, and configurations to identify the cause of the downtime. Implement a temporary solution such as assigning static IP addresses to critical devices if necessary. Work on restoring the DHCP server and its services, and test the functionality once it is back online. Review and update disaster recovery procedures to minimize future downtime.<br>
+Certainly! For a SOC (Security Operations Center) Analyst Level 2 role, questions about DHCP (Dynamic Host Configuration Protocol) typically focus on understanding how DHCP can be a vector for security threats and how to manage and mitigate those threats. Here are some common interview questions you might encounter on this topic:</li>
+</ul>
+</li>
+</ol>
+<h3 id="technical-questions-1"><strong>Technical Questions</strong></h3>
+<ol>
+<li>
+<p><strong>Explain the Role of DHCP in a Network:</strong></p>
+<ul>
+<li>What is the function of DHCP in a network, and how does it support the network configuration process?</li>
+</ul>
+</li>
+<li>
+<p><strong>What are Common Security Risks Associated with DHCP?</strong></p>
+<ul>
+<li>Describe potential security threats related to DHCP, such as DHCP spoofing, DHCP starvation, and rogue DHCP servers.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Does DHCP Spoofing Work, and What Are Its Implications?</strong></p>
+<ul>
+<li>Explain how an attacker might exploit DHCP spoofing to disrupt network operations or intercept network traffic.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is DHCP Starvation, and How Can It Be Prevented?</strong></p>
+<ul>
+<li>Define DHCP starvation and discuss methods to protect against this type of attack.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Can You Detect a Rogue DHCP Server on a Network?</strong></p>
+<ul>
+<li>What techniques or tools would you use to identify unauthorized DHCP servers in your network?</li>
+</ul>
+</li>
+<li>
+<p><strong>Describe How DHCP Relay Agents Work and Their Purpose in Large Networks.</strong></p>
+<ul>
+<li>Explain the role of DHCP relay agents and how they assist in DHCP communication between clients and servers across different network segments.</li>
+</ul>
+</li>
+</ol>
+<h3 id="scenario-based-questions-1"><strong>Scenario-Based Questions</strong></h3>
+<ol>
+<li>
+<p><strong>Scenario: Unusual Network Behavior</strong></p>
+<ul>
+<li>You notice unusual network behavior and suspect a DHCP-related issue. How would you investigate and resolve this problem?</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: Rogue DHCP Server Detection</strong></p>
+<ul>
+<li>You receive alerts indicating possible rogue DHCP servers on your network. What steps would you take to verify and address the situation?</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: Client Connectivity Issues</strong></p>
+<ul>
+<li>Several clients are reporting connectivity issues, and you suspect a DHCP configuration problem. How would you troubleshoot and resolve these issues?</li>
+</ul>
+</li>
+<li>
+<p><strong>Scenario: DHCP Server Logs Review</strong></p>
+<ul>
+<li>During a routine log review, you find unusual patterns in the DHCP server logs. What would you look for, and how would you interpret these logs?</li>
+</ul>
+</li>
+</ol>
+<h3 id="general-security-questions"><strong>General Security Questions</strong></h3>
+<ol>
+<li>
+<p><strong>How Do You Protect Against DHCP-Related Attacks in a SOC Environment?</strong></p>
+<ul>
+<li>Discuss strategies and best practices for securing DHCP services and mitigating potential attacks.</li>
+</ul>
+</li>
+<li>
+<p><strong>What Tools and Techniques Do You Use for Monitoring DHCP Traffic?</strong></p>
+<ul>
+<li>Describe the tools and techniques you use to monitor and analyze DHCP traffic for signs of malicious activity.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Would You Integrate DHCP Monitoring into a Broader Security Strategy?</strong></p>
+<ul>
+<li>Explain how you would incorporate DHCP monitoring and management into your overall security operations strategy.</li>
+</ul>
+</li>
+<li>
+<p><strong>Describe a Time When You Dealt with a Security Incident Involving DHCP.</strong></p>
+<ul>
+<li>Provide an example of a security incident related to DHCP that you handled, detailing your approach to resolving the issue.</li>
+</ul>
+</li>
+</ol>
+<h3 id="behavioral-questions"><strong>Behavioral Questions</strong></h3>
+<ol>
+<li>
+<p><strong>How Do You Prioritize Security Incidents Related to DHCP?</strong></p>
+<ul>
+<li>Explain your approach to prioritizing and managing DHCP-related security incidents in a SOC environment.</li>
+</ul>
+</li>
+<li>
+<p><strong>Describe a Situation Where You Had to Collaborate with Other Teams to Address a DHCP Issue.</strong></p>
+<ul>
+<li>Share an example of how you worked with other departments (e.g., network engineers or IT support) to resolve a DHCP-related problem.</li>
+</ul>
+</li>
+<li>
+<p><strong>How Do You Stay Updated on Emerging Threats and Best Practices Related to DHCP Security?</strong></p>
+<ul>
+<li>Discuss how you keep up with the latest developments in DHCP security and incorporate new knowledge into your work.</li>
+</ul>
+</li>
+</ol>
+</div>
+</body>
+
+</html>

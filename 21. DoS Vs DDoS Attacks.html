@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>21. DoS Vs DDoS Attacks</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="dos-vs-ddos-attacks">DoS Vs DDoS Attacks</h1>
+<h3 id="dos-denial-of-service-attack">Dos (Denial-of-service) Attack:</h3>
+<hr>
+<p><img src="https://www.pynetlabs.com/wp-content/uploads/2023/07/DoS-Attack.jpeg" alt="Difference Between DoS and DDoS Attack - PyNet Labs"></p>
+<ul>
+<li>Attacker sends multiple request from client to server.</li>
+<li>The server will respond the each request and waiting for  the acknowledgment from the client.</li>
+<li>The attacker continuously sends requests to the server instead of ack to previous requests/packets, then the server can handle the requests as per the rate limit and bandwidth.</li>
+<li>After crossing the rate limit the server can not handle overwhelming traffic, it will lead to server crash, slowdown, inaccessible (or) complete outage to legit users.</li>
+</ul>
+<h3 id="types-of-dos-attacks"><strong>Types of DoS Attacks</strong></h3>
+<ol>
+<li>
+<p><strong>Flooding Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Overwhelms the target with excessive traffic or requests, consuming its resources and rendering it unresponsive.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>ICMP Flood</strong>: Sends a high volume of ICMP (ping) packets to the target.</li>
+<li><strong>SYN Flood</strong>: Exploits the TCP handshake process by sending a large number of SYN requests without completing the handshake.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Application Layer Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Targets specific applications or services at the application layer (Layer 7) of the OSI model to exhaust resources.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>HTTP Flood</strong>: Sends numerous HTTP requests to overwhelm a web server.</li>
+<li><strong>Slowloris</strong>: Keeps many connections open to a server and sends partial HTTP requests to exhaust server resources.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Amplification Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Exploits the amplification effect of certain protocols to magnify the attack’s impact.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>DNS Amplification</strong>: Uses open DNS resolvers to flood the target with large amounts of DNS response traffic.</li>
+<li><strong>NTP Amplification</strong>: Exploits Network Time Protocol (NTP) servers to send large amounts of traffic to the target.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Ping of Death</strong></p>
+<ul>
+<li><strong>Description</strong>: Sends malformed or oversized packets to the target, causing system crashes or reboots.</li>
+<li><strong>Example</strong>: An attacker sends ping requests with packets that exceed the maximum allowable size, causing buffer overflows or crashes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Teardrop Attack</strong></p>
+<ul>
+<li><strong>Description</strong>: Sends fragmented packets that exploit vulnerabilities in the packet reassembly process, causing crashes or instability.</li>
+<li><strong>Example</strong>: Malformed packets are sent to the target, which cannot correctly reassemble them, leading to system crashes.</li>
+</ul>
+</li>
+</ol>
+<h3 id="ddos-distributed-denial-of-service-attack">DDos (Distributed Denial-of-service) Attack:</h3>
+<hr>
+<p><img src="https://cdn.prod.website-files.com/5ff66329429d880392f6cba2/62826a3497d4ec066e41c9f0_DoS%20in%20action.jpg" alt="What is Denial of Service Attack (DoS)? Definition and Types"></p>
+<ul>
+<li>In this attacker sends multiple requests from the <em><strong>botnet (Zombie network)/ ( group of compromised devices)</strong></em> to the server, then the server can handle the traffic until reaching to rate limit of the server, after that it will shutdown/ crashed or inaccessible to legit users.</li>
+</ul>
+<h3 id="types-of-ddos-attacks"><strong>Types of DDoS Attacks</strong></h3>
+<ol>
+<li>
+<p><strong>Volumetric Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Overloads the target with high volumes of traffic to consume available bandwidth.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>UDP Flood</strong>: Sends a large volume of UDP packets to the target, consuming bandwidth and resources.</li>
+<li><strong>DNS Water Torture</strong>: Sends a large number of DNS queries to overwhelm the target’s DNS server.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Protocol Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Exploits weaknesses in network protocols to exhaust resources or disrupt service.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>SYN Flood</strong>: Similar to DoS SYN flood but distributed across multiple systems.</li>
+<li><strong>Smurf Attack</strong>: Uses ICMP echo requests with spoofed source IP addresses to amplify the attack across multiple devices.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Application Layer Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Targets specific applications or services with high-volume requests to exhaust server resources.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>HTTP Flood</strong>: Distributed requests to overwhelm a web server.</li>
+<li><strong>Slowloris</strong>: Distributed slow HTTP requests to exhaust server connections.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Botnet Attacks</strong></p>
+<ul>
+<li><strong>Description</strong>: Utilizes a network of compromised devices (bots) to execute a large-scale attack.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><strong>Botnet-Based Flooding</strong>: Coordinated flooding attacks from numerous infected devices.</li>
+<li><strong>IoT Botnets</strong>: Uses Internet of Things (IoT) devices to launch large-scale DDoS attacks.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>DNS Query Flood</strong></p>
+<ul>
+<li><strong>Description</strong>: Sends a high volume of DNS queries to a DNS server, overwhelming it and causing service disruption.</li>
+<li><strong>Example</strong>: Distributed DNS queries from multiple sources to flood the DNS server.</li>
+</ul>
+</li>
+</ol>
+<h3 id="mitigation-strategies"><strong>Mitigation Strategies</strong></h3>
+<ul>
+<li><strong>Use DDoS Protection Services</strong>: Employ services that provide DDoS mitigation to absorb and filter malicious traffic.</li>
+<li><strong>Implement Rate Limiting</strong>: Limit the number of requests a server will accept from a single IP address.</li>
+<li><strong>Deploy Web Application Firewalls (WAFs)</strong>: Protect against application layer attacks by filtering and monitoring HTTP traffic.</li>
+<li><strong>Monitor Traffic</strong>: Continuously monitor network traffic for unusual patterns or spikes that may indicate an attack.</li>
+<li><strong>Enhance Network Infrastructure</strong>: Use load balancers, redundant servers, and scalable infrastructure to handle increased traffic.</li>
+</ul>
+<p><strong>NOTE:</strong></p>
+<ul>
+<li><em><strong>Botnet</strong></em> is a group of compromised devices controlled by the botmaster.</li>
+<li><em><strong>Zombie</strong></em> is part of botnet, it is a one device from the group of devices and act as a node that can be instructed to carry out commands from the botmaster.</li>
+</ul>
+</div>
+</body>
+
+</html>

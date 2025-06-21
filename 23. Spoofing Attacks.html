@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>23. Spoofing Attacks</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="spoofing-attack">Spoofing Attack</h2>
+<ul>
+<li><strong>Spoofing Attacks</strong> involve tricking a system or user into believing that a malicious entity is a trusted or legitimate one. Mail aim of this attack is attacker hide his own identity.</li>
+<li>Here’s a breakdown of the most common types:</li>
+</ul>
+<p><strong>1. IP Spoofing</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: IP spoofing involves sending packets with a forged source IP address to make it appear as if they are coming from a trusted source.</li>
+<li><strong>How It Works</strong>: An attacker can create packets with a fake IP address to disguise their true identity. This can be used to bypass IP-based security measures or to launch other attacks, such as Denial of Service (DoS).</li>
+<li><strong>Prevention</strong>: Implement ingress and egress filtering, use IPsec for encryption and authentication, and monitor network traffic for anomalies.</li>
+</ul>
+<p><strong>2. Email Spoofing</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: Email spoofing involves forging the sender’s email address to make it look like the email is coming from a legitimate or trusted source.</li>
+<li><strong>How It Works</strong>: Attackers manipulate the “From” field in the email header to deceive recipients into believing the email is from someone they know or trust. This can be used for phishing attacks or to spread malware.</li>
+<li><strong>Prevention</strong>: Use email authentication methods like SPF (Sender Policy Framework), DKIM (DomainKeys Identified Mail), and DMARC (Domain-based Message Authentication, Reporting &amp; Conformance). Educate users to recognize phishing attempts.</li>
+</ul>
+<p><strong>3. Website Spoofing</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: Website spoofing involves creating a fraudulent website that mimics a legitimate site to trick users into providing sensitive information.</li>
+<li><strong>How It Works</strong>: Attackers set up a fake website with a similar look and URL to a legitimate one, often using techniques like domain squatting or typo-squatting to deceive users.</li>
+<li><strong>Prevention</strong>: Use secure connections (HTTPS), check the website’s URL carefully, and educate users about recognizing secure sites. Implement strong domain monitoring and use anti-phishing tools.</li>
+</ul>
+<p><strong>4. DNS Spoofing (DNS Cache Poisoning)</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: DNS spoofing involves corrupting the DNS cache of a resolver to redirect users to malicious websites.</li>
+<li><strong>How It Works</strong>: Attackers inject false DNS responses into the cache, causing the DNS resolver to return incorrect IP addresses for domain names. This can redirect users to malicious sites.</li>
+<li><strong>Prevention</strong>: Use DNSSEC (Domain Name System Security Extensions) to protect the integrity of DNS responses, and regularly update and patch DNS servers.</li>
+</ul>
+<p><strong>4. Caller ID Spoofing</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: Caller ID spoofing involves manipulating the caller ID information to make it appear as though a call is coming from a legitimate or trusted source.</li>
+<li><strong>How It Works</strong>: Attackers use software or services to alter the caller ID information displayed on the recipient’s phone. This is often used in phone scams and fraud.</li>
+<li><strong>Prevention</strong>: Be cautious with unsolicited calls, verify the caller’s identity through alternative means if necessary, and use call-blocking technologies.</li>
+</ul>
+<p><strong>5. Address Spoofing</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: Address spoofing involves forging the source address in network packets to make them appear as if they come from a trusted source.</li>
+<li><strong>How It Works</strong>: Attackers manipulate the source address of packets in network communications, which can be used to evade security measures or to conduct attacks like DoS.</li>
+<li><strong>Prevention</strong>: Implement network security measures like ingress and egress filtering, and use authentication and encryption protocols.</li>
+</ul>
+<p><strong>6. ARPSpoofing (Address Resolution Protocol Spoofing)</strong>:</p>
+<ul>
+<li><strong>Definition</strong>: ARP spoofing involves sending falsified ARP messages over a local network to associate the attacker’s MAC address with the IP address of a legitimate user or server.<br>
+<strong>How It Works</strong>: Attackers use ARP spoofing to intercept or redirect network traffic, potentially leading to eavesdropping or man-in-the-middle attacks.</li>
+<li><strong>Prevention</strong>: Use static ARP entries, implement ARP monitoring tools, and deploy network security measures like dynamic ARP inspection.</li>
+</ul>
+</div>
+</body>
+
+</html>

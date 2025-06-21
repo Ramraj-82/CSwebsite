@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>27. Cross site request forgery attack</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="cross-site-request-forgery-attack">Cross Site Request Forgery Attack</h2>
+<p><img src="https://creativegroundtech.com/wp-content/uploads/2021/01/cross-site-request-forgery.webp" alt="What is Cross-site Request Forgery (CSRF)? - Creative Ground Technologies"></p>
+<p><strong>Cross-Site Request Forgery (CSRF)</strong> is a web security vulnerability that occurs when a malicious website, email, blog, instant message, or program causes a user’s web browser to perform an unwanted action on a trusted site when the user is authenticated.</p>
+<h3 id="how-a-csrf-attack-works">How a CSRF Attack Works:</h3>
+<ol>
+<li><strong>Victim logs in:</strong> The victim logs into a trusted website, such as an online banking portal or an e-commerce site.</li>
+<li><strong>Session token:</strong> The website assigns the victim a session token, which is used to identify the victim and maintain their session.</li>
+<li><strong>Malicious request:</strong> An attacker crafts a malicious request that contains the victim’s session token. This request is disguised as a legitimate request from the trusted website.</li>
+<li><strong>Victim’s browser:</strong> The victim unintentionally clicks on a link or opens an attachment that triggers the malicious request. Their browser sends the forged request to the trusted website.</li>
+<li><strong>Forged request executed:</strong> The trusted website receives the forged request and executes it, believing it to be a legitimate request from the victim.</li>
+</ol>
+<h3 id="impact-of-csrf">Impact of CSRF:</h3>
+<ul>
+<li><strong>Unauthorized transactions:</strong> Attackers can use CSRF to perform unauthorized actions on a victim’s behalf, such as transferring funds, making purchases, or changing account settings.</li>
+<li><strong>Data theft:</strong> CSRF can be used to steal sensitive information, such as credit card details or personal data.</li>
+<li><strong>Account compromise:</strong> CSRF can compromise a victim’s account, allowing the attacker to gain access to their personal information and resources.</li>
+</ul>
+<h3 id="prevention">Prevention:</h3>
+<ul>
+<li><strong>Synchronizer Token Pattern (STP):</strong> This is a common technique to prevent CSRF by adding a unique, unpredictable, secret, session-specific token to every web request.</li>
+<li><strong>Double Submit Cookie (DSC):</strong> This technique involves setting a random value in both a cookie and a hidden field in the HTML form. The server then checks that the values match before processing the request.</li>
+<li><strong>Checking the HTTP Referer header:</strong> While not entirely reliable, as it can be modified or absent, checking the Referer header can provide some level of protection against CSRF.</li>
+<li><strong>Educating users:</strong> Educate users about the risks of CSRF and encourage them to be cautious of clicking on suspicious links or opening attachments from unknown sources.</li>
+</ul>
+</div>
+</body>
+
+</html>

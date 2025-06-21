@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24. Web application &amp; Attacks</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="web-application">Web Application</h2>
+<p>A <strong>web application</strong> is a software application that runs on a web server rather than being installed on a user’s local device. Users interact with web applications through a web browser, and they are accessed via the Internet or an intranet. Web applications leverage web technologies and protocols such as HTTP, HTML, CSS, JavaScript, and server-side languages (like PHP, Python, Ruby, Java, etc.) to deliver their functionality.</p>
+<h3 id="how-do-web-applications-work">How Do Web Applications Work?</h3>
+<p><img src="https://cdn.acunetix.com/wp_content/uploads/2012/10/web-apps.gif" alt="What is a Web App?"></p>
+<ul>
+<li>The figure below shows how the initial request is triggered by the user through the browser over the Internet to the web application server. The web application accesses the databases servers to perform the requested task updating and retrieving the information lying within the database. The web application then presents the information to the user through the browser.<br>
+<img src="https://cdn.acunetix.com/wp_content/uploads/2012/10/web-apps-2.gif" alt="web application attack"></li>
+</ul>
+<h3 id="attacks">Attacks</h3>
+<ul>
+<li>Web application attacks are harmful actions that take <strong>advantage of weaknesses</strong> in websites or online apps.</li>
+<li>If the attack successful, the attacker can carried out below<br>
+1.	Steal confidential information (Passwords)<br>
+2.	Gain unauthorized access<br>
+3.	Modify or alter the data<br>
+4.	Disrupt the services</li>
+</ul>
+<h3 id="🧨-common-goals-of-web-attacks">🧨 Common Goals of Web Attacks:</h3>
+<ul>
+<li>
+<p><strong>Data Theft</strong> (e.g., customer info, login credentials)</p>
+</li>
+<li>
+<p><strong>Privilege Escalation</strong> (gaining admin access)</p>
+</li>
+<li>
+<p><strong>System Compromise</strong> (uploading malicious code)</p>
+</li>
+<li>
+<p><strong>Denial of Service</strong> (crashing the application</p>
+</li>
+</ul>
+<h2 id="common-web-application-attacks">Common Web application attacks</h2>
+<ul>
+<li>
+<p><strong>SQL Injection (SQLi)</strong><br>
+Malicious SQL queries are injected into input fields to access or manipulate the database.</p>
+</li>
+<li>
+<p><strong>Cross-Site Scripting (XSS)</strong><br>
+Attackers inject malicious scripts into web pages viewed by other users to steal cookies or session data.</p>
+</li>
+<li>
+<p><strong>Cross-Site Request Forgery (CSRF)</strong><br>
+Tricks authenticated users into unknowingly submitting requests (like form submissions) to perform unwanted actions.</p>
+</li>
+<li>
+<p><strong>Broken Authentication</strong><br>
+Flaws in authentication allow attackers to compromise passwords, keys, or sessions and impersonate users.</p>
+</li>
+<li>
+<p><strong>Broken Access Control</strong><br>
+Users can access data or actions they shouldn’t (e.g., accessing admin pages without permission).</p>
+</li>
+<li>
+<p><strong>Security Misconfiguration</strong><br>
+Incorrect settings (e.g., default credentials, open cloud storage) expose systems to attacks.</p>
+</li>
+<li>
+<p><strong>Insecure Direct Object References (IDOR)</strong><br>
+Attackers manipulate input (like user IDs in URLs) to access other users’ data.</p>
+</li>
+<li>
+<p><strong>Sensitive Data Exposure</strong><br>
+Insecure handling of sensitive information (e.g., passwords, credit card numbers) leads to data leaks.</p>
+</li>
+<li>
+<p><strong>Session Hijacking</strong><br>
+Attackers steal session tokens to impersonate a user and take over their session.</p>
+</li>
+<li>
+<p><strong>API Abuse</strong><br>
+Attackers exploit poorly protected APIs to extract data, bypass business rules, or overload systems.</p>
+</li>
+</ul>
+<h3 id="🔐-prevention-technique">🔐 <strong>Prevention technique:</strong></h3>
+<ul>
+<li><strong>Sanitize and validate user input</strong> before allowing.</li>
+<li>Use prepare parameterized queries instead of dynamic queries.<br>
+<strong>Parameterized query:</strong>  Keeps the user input separate from SQL code, so even if a user enters something malicious, it’s treated as data—not code.<br>
+<strong>Dynamic Query:</strong> user input is directly added to the SQL statement, making it easy for attackers to inject malicious code.</li>
+<li>Apply <strong>patches and updates</strong> regularly.</li>
+<li>Use <strong>Web application firewalls</strong> to filter malicious traffic towards to web application.</li>
+<li>Use <strong>least or limited privileges account</strong>  while logging or connecting to the web application database.</li>
+<li>Allow access only within <strong>specific folders</strong></li>
+<li>Also, good idea to turn off <strong>visibility of DB errors</strong> on the website.</li>
+<li>Regularly <strong>update the password</strong> of application and database.</li>
+</ul>
+</div>
+</body>
+
+</html>
